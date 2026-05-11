@@ -61,7 +61,7 @@ namespace DoAnCSharp.Models
             if (this == obj) 
                 return true;
             Tinh other = (Tinh)obj;
-            return this.maTinh == other.MaTinh && this.tenTinh == other.TenTinh;
+            return this.maTinh == other.MaTinh;
         }
     }
 

@@ -60,12 +60,30 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value != null)
+                if (gioiTinh != value)
                 {
                     gioiTinh = value;
                 }
             }
         }
+        private DateTime ngaySinh;
+        public DateTime getNgaySinh()
+        {
+            return ngaySinh;
+        }
+        public void setNgaySinh(DateTime inputDate)
+        {
+            
+            if (inputDate >= DateTime.MinValue)
+            {
+                this.ngaySinh = inputDate;
+            }
+            else
+            {
+                Console.WriteLine("Ngày không hợp lệ hoặc đang để trống.");
+            }
+        }
+
         private float diemMon1;
         public float DiemMon1
         {
@@ -130,16 +148,27 @@ namespace DoAnCSharp.Models
         public SinhVien()
         {
         }
-        public SinhVien(int maSinhVien, string tenSinhVien, )
+        public SinhVien(int maSinhVien, string tenSinhVien,Tinh queQuan, DateTime ngaySinh,bool gioiTinh, float diemMon1, float diemMon2, float diemMon3 ,float diemMon4)
+        {
+            this.maSinhVien = maSinhVien;
+            this.tenSinhVien =tenSinhVien;
+            this.queQuan = queQuan;
+            this.ngaySinh = ngaySinh;
+            this.gioiTinh = gioiTinh;
+            this.diemMon1 = diemMon1;
+            this.diemMon2 = diemMon2;
+            this.diemMon3 = diemMon3;
+            this.DiemMon4 = diemMon4;
+        } 
         //toString
         public override string ToString()
         {
-            return $"Tỉnh: {tenTinh}, Mã tỉnh: {maTinh} ";
+            return $"MSSV: {maSinhVien}, Họ và tên: {tenSinhVien}\nQuên quán: {queQuan}\nNgày sinh: {ngaySinh}]\tGiới tính: {gioiTinh}\n Điểm môn 1: {diemMon1}\n Điểm môn 2: {diemMon2}\n Điểm môn 3: {diemMon3}\n Điểm môn 3: {diemMon3}";
         }
         //Hashcode và Equals
         public override int GetHashCode()
         {
-            return HashCode.Combine(maTinh, tenTinh);
+            return HashCode.Combine(maSinhVien, tenSinhVien);
         }
         public override bool Equals(object obj)
         {
@@ -147,8 +176,8 @@ namespace DoAnCSharp.Models
                 return false;
             if (this == obj)
                 return true;
-            Tinh other = (Tinh)obj;
-            return this.maTinh == other.MaTinh && this.tenTinh == other.TenTinh;
+            SinhVien other = (SinhVien)obj;
+            return this.maSinhVien == other.maSinhVien;
         }
     }
 }
