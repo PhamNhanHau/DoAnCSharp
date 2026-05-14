@@ -64,5 +64,4 @@ namespace DoAnCSharp.Models
             return this.maTinh == other.MaTinh;
         }
     }
-
 }

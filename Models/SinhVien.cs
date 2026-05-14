@@ -93,7 +93,7 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value > 0)
+                if (value > 0 && value < 10)
                 {
                     diemMon1 = value;
                 }
@@ -108,7 +108,7 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value > 0)
+                if (value > 0 && value < 10)
                 {
                     diemMon2 = value;
                 }
@@ -123,7 +123,7 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value > 0)
+                if (value > 0 && value < 10)
                 {
                     diemMon3 = value;
                 }
