@@ -1,32 +1,39 @@
+using DoAnCSharp.Models;
+using DoAnCSharp.view;
+
 namespace DoAnCSharp
 {
     public partial class QLSVView : Form
     {
-        public QLSVView()
+        public QLSVView() { InitializeComponent(); }
+        public void capNhatDuLieuTinhVaoCBBQueQuan(List<Tinh> dsTinh)
         {
-            InitializeComponent();
+            this.comboBoxQueQuan.DataSource = null;
+            this.comboBoxQueQuan.DataSource = dsTinh;
+            this.comboBoxQueQuan.DisplayMember = "TenTinh";
+            this.comboBoxQueQuan.ValueMember = "MaTinh";
+            this.comboBoxQueQuanThem.DataSource = null;
+            this.comboBoxQueQuanThem.DataSource = dsTinh;
+            this.comboBoxQueQuanThem.DisplayMember = "TenTinh";
+            this.comboBoxQueQuanThem.ValueMember = "MaTinh";
+            
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void themDuLieuVaoHaiCBB(object sender, EventArgs e)
         {
-
+   
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
-
         private void labelMaSinhVien_Click(object sender, EventArgs e)
         {
 
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -113,6 +120,11 @@ namespace DoAnCSharp
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxQueQuan_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

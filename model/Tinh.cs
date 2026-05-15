@@ -63,5 +63,54 @@ namespace DoAnCSharp.Models
             Tinh other = (Tinh)obj;
             return this.maTinh == other.MaTinh;
         }
+        public static List<Tinh> getDSTinh()
+        {
+            String[] arr_tinh = {
+                "An Giang",
+                "Bắc Ninh",
+                "Cà Mau",
+                "Cao Bằng",
+                "Đắk Lắk",
+                "Điện Biên",
+                "Đồng Nai",
+                "Đồng Tháp",
+                "Gia Lai",
+                "Hà Tĩnh",
+                "Hưng Yên",
+                "Khánh Hòa",
+                "Lai Châu",
+                "Lạng Sơn",
+                "Lào Cai",
+                "Lâm Đồng",
+                "Nghệ An",
+                "Ninh Bình",
+                "Phú Thọ",
+                "Quảng Ngãi",
+                "Quảng Ninh",
+                "Quảng Trị",
+                "Sơn La",
+                "Tây Ninh",
+                "Thái Nguyên",
+                "Thanh Hóa",
+                "TP. Cần Thơ",
+                "TP. Đà Nẵng",
+                "TP. Hà Nội",
+                "TP. Hải Phòng",
+                "TP. Hồ Chí Minh",
+                "TP. Huế",
+                "Tuyên Quang",
+                "Vĩnh Long"};
+            List<Tinh> listTinh = new List<Tinh>();
+            int i = 0;
+            foreach (String str in arr_tinh) { }
+
+
+            foreach (String tenTinh in arr_tinh)
+            {
+                Tinh t = new Tinh(i, tenTinh);
+                listTinh.Add(t);
+            }
+            return listTinh;
+        }
     }
 }

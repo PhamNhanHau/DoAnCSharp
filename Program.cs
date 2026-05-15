@@ -6,7 +6,9 @@ namespace DoAnCSharp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new QLSVView());
+            QLSVView view = new QLSVView();
+            QLSVController controller = new QLSVController(view);
+            Application.Run(view);
         }
     }
 }

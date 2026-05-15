@@ -1,10 +1,28 @@
-﻿using System;
+﻿using DoAnCSharp.Models;
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace DoAnCSharp
 {
-    internal class QLSVController
+    internal class QLSVController 
     {
+        private QLSVView viewQLSV;
+        private QLSVModel modelQLSV;
+        public QLSVController(QLSVView view)
+        {
+            this.viewQLSV = view;
+            this.modelQLSV = new QLSVModel();
+            // Controller Khoi chay du lieu
+            LoadInitialData();
+        }
+
+        private void LoadInitialData()
+        {
+            //Khoi tao du lieu cho comboBox
+            List<Tinh> dsTinh = Tinh.getDSTinh();
+            viewQLSV.capNhatDuLieuTinhVaoCBBQueQuan(dsTinh);
+        }
     }
 }

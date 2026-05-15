@@ -1,8 +1,10 @@
-﻿namespace DoAnCSharp
+﻿using DoAnCSharp.Models;
+using System.Runtime.CompilerServices;
+
+namespace DoAnCSharp
 {
     partial class QLSVView
     {
-        
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
         {
@@ -12,7 +14,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -30,10 +31,10 @@
             buttonHuyTim = new Button();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            aboutMeToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             closeToolStripMenuItem = new ToolStripMenuItem();
+            aboutMeToolStripMenuItem = new ToolStripMenuItem();
             table = new DataGridView();
             labelDanhSachSinhVien = new Label();
             labelThemHoacChinhSua = new Label();
@@ -99,14 +100,15 @@
             comboBoxQueQuan.FormattingEnabled = true;
             comboBoxQueQuan.Location = new Point(162, 90);
             comboBoxQueQuan.Name = "comboBoxQueQuan";
-            comboBoxQueQuan.Size = new Size(171, 45);
+            comboBoxQueQuan.Size = new Size(222, 45);
             comboBoxQueQuan.TabIndex = 2;
+            comboBoxQueQuan.SelectedIndexChanged += comboBoxQueQuan_SelectedIndexChanged;
             // 
             // labelMaSinhVien
             // 
             labelMaSinhVien.AutoSize = true;
             labelMaSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelMaSinhVien.Location = new Point(339, 93);
+            labelMaSinhVien.Location = new Point(393, 93);
             labelMaSinhVien.Name = "labelMaSinhVien";
             labelMaSinhVien.Size = new Size(174, 38);
             labelMaSinhVien.TabIndex = 3;
@@ -116,9 +118,9 @@
             // textBoxMaSinhVien
             // 
             textBoxMaSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxMaSinhVien.Location = new Point(519, 90);
+            textBoxMaSinhVien.Location = new Point(573, 90);
             textBoxMaSinhVien.Name = "textBoxMaSinhVien";
-            textBoxMaSinhVien.Size = new Size(223, 43);
+            textBoxMaSinhVien.Size = new Size(169, 43);
             textBoxMaSinhVien.TabIndex = 4;
             textBoxMaSinhVien.TextChanged += textBox1_TextChanged;
             // 
@@ -160,30 +162,30 @@
             fileToolStripMenuItem.Size = new Size(74, 42);
             fileToolStripMenuItem.Text = "File";
             // 
+            // openToolStripMenuItem
+            // 
+            openToolStripMenuItem.Name = "openToolStripMenuItem";
+            openToolStripMenuItem.Size = new Size(176, 42);
+            openToolStripMenuItem.Text = "Open";
+            // 
+            // saveToolStripMenuItem
+            // 
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.Size = new Size(176, 42);
+            saveToolStripMenuItem.Text = "Save";
+            // 
+            // closeToolStripMenuItem
+            // 
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            closeToolStripMenuItem.Size = new Size(176, 42);
+            closeToolStripMenuItem.Text = "Close";
+            // 
             // aboutMeToolStripMenuItem
             // 
             aboutMeToolStripMenuItem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
             aboutMeToolStripMenuItem.Name = "aboutMeToolStripMenuItem";
             aboutMeToolStripMenuItem.Size = new Size(154, 42);
             aboutMeToolStripMenuItem.Text = "About Me";
-            // 
-            // openToolStripMenuItem
-            // 
-            openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 42);
-            openToolStripMenuItem.Text = "Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 42);
-            saveToolStripMenuItem.Text = "Save";
-            // 
-            // closeToolStripMenuItem
-            // 
-            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(224, 42);
-            closeToolStripMenuItem.Text = "Close";
             // 
             // table
             // 
@@ -512,7 +514,7 @@
             textBoxDiemCuoiKi.Size = new Size(73, 43);
             textBoxDiemCuoiKi.TabIndex = 40;
             // 
-            // Form1
+            // QLSVView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -559,18 +561,16 @@
             Controls.Add(labelQueQuan);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "QLSVView";
+            Text = "Quản lý sinh viên";
+            Load += themDuLieuVaoHaiCBB;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)table).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
         #endregion
-
         private Label labelQueQuan;
         private Label labelTimKiemSinhVien;
         private ComboBox comboBoxQueQuan;
@@ -618,5 +618,6 @@
         private Label labelDiemCuoiKi;
         public TextBox textBoxDiemGiuaKi;
         public TextBox textBoxDiemCuoiKi;
+        private QLSVModel model = new QLSVModel();
     }
 }
