@@ -84,63 +84,78 @@ namespace DoAnCSharp.Models
             }
         }
 
-        private float diemMon1;
-        public float DiemMon1
+        private float diemThuongXuyen1;
+        public float DiemThuongXuyen1
         {
             get
             {
-                return diemMon1;
+                return diemThuongXuyen1;
             }
             set
             {
-                if (value > 0 && value < 10)
+                if (value >= 0 && value <= 10)
                 {
-                    diemMon1 = value;
+                    diemThuongXuyen1 = value;
                 }
             }
         }
-        private float diemMon2;
-        public float DiemMon2
+        private float diemThuongXuyen2;
+        public float DiemThuongXuyen2
         {
             get
             {
-                return diemMon2;
+                return diemThuongXuyen2;
             }
             set
             {
-                if (value > 0 && value < 10)
+                if (value >= 0 && value <= 10)
                 {
-                    diemMon2 = value;
+                    diemThuongXuyen2 = value;
                 }
             }
         }
-        private float diemMon3;
-        public float DiemMon3
+        private float diemThuongXuyen3;
+        public float DiemThuongXuyen3
         {
             get
             {
-                return diemMon3;
+                return diemThuongXuyen3;
             }
             set
             {
-                if (value > 0 && value < 10)
+                if (value >= 0 && value <= 10)
                 {
-                    diemMon3 = value;
+                    diemThuongXuyen3 = value;
                 }
             }
         }
-        private float diemMon4;
-        public float DiemMon4
+        private float diemGiuaKi;
+        public float DiemGiuaKi
         {
             get
             {
-                return diemMon4;
+                return diemGiuaKi;
             }
             set
             {
-                if (value > 0)
+                if (value >= 0 && value <=10)
                 {
-                    diemMon4 = value;
+                    diemGiuaKi = value;
+                }
+            }
+        }
+        private float diemCuoiKi;
+        public float DiemCuoiKi
+        {
+            get
+            {
+                return diemCuoiKi;
+            }
+            set
+            {
+                if (value >= 0 && value <= 10)
+                {
+                    diemCuoiKi = value;
                 }
             }
         }
@@ -148,22 +163,23 @@ namespace DoAnCSharp.Models
         public SinhVien()
         {
         }
-        public SinhVien(int maSinhVien, string tenSinhVien,Tinh queQuan, DateTime ngaySinh,bool gioiTinh, float diemMon1, float diemMon2, float diemMon3 ,float diemMon4)
+        public SinhVien(int maSinhVien, string tenSinhVien,Tinh queQuan, DateTime ngaySinh,bool gioiTinh, float diemThuongXuyen1, float diemThuongXuyen2, float diemThuongXuyen3, float diemGiuaKi, float diemCuoiKi)
         {
             this.maSinhVien = maSinhVien;
             this.tenSinhVien =tenSinhVien;
             this.queQuan = queQuan;
             this.ngaySinh = ngaySinh;
             this.gioiTinh = gioiTinh;
-            this.diemMon1 = diemMon1;
-            this.diemMon2 = diemMon2;
-            this.diemMon3 = diemMon3;
-            this.DiemMon4 = diemMon4;
+            this.diemThuongXuyen1 = diemThuongXuyen1;
+            this.diemThuongXuyen2 = diemThuongXuyen2;
+            this.diemThuongXuyen3 = diemThuongXuyen3;
+            this.diemGiuaKi = diemGiuaKi;
+            this.diemCuoiKi = diemCuoiKi;
         } 
         //toString
         public override string ToString()
         {
-            return $"MSSV: {maSinhVien}, Họ và tên: {tenSinhVien}\nQuên quán: {queQuan}\nNgày sinh: {ngaySinh}]\tGiới tính: {gioiTinh}\n Điểm môn 1: {diemMon1}\n Điểm môn 2: {diemMon2}\n Điểm môn 3: {diemMon3}\n Điểm môn 3: {diemMon3}";
+            return $"MSSV: {maSinhVien}, Họ và tên: {tenSinhVien}, Quên quán: {queQuan}";
         }
         //Hashcode và Equals
         public override int GetHashCode()

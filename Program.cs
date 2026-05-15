@@ -5,10 +5,8 @@ namespace DoAnCSharp
         [STAThread]
         static void Main()
         {
-            
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ViewQLSV());
+            Application.Run(new QLSVView());
         }
     }
 }

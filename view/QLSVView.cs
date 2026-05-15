@@ -1,8 +1,8 @@
 namespace DoAnCSharp
 {
-    public partial class Form1 : Form
+    public partial class QLSVView : Form
     {
-        public Form1()
+        public QLSVView()
         {
             InitializeComponent();
         }
