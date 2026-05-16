@@ -40,7 +40,7 @@ namespace DoAnCSharp
             labelThemHoacChinhSua = new Label();
             labelMaSinhVienThem = new Label();
             textBoxMaSinhVienThem = new TextBox();
-            textBoxHoVaTenThem = new TextBox();
+            textBoxHoVaTen = new TextBox();
             labelQueQuanThem = new Label();
             comboBoxQueQuanThem = new ComboBox();
             labelNgaySinh = new Label();
@@ -64,12 +64,14 @@ namespace DoAnCSharp
             textBoxDiemThuongXuyen1 = new TextBox();
             textBoxDiemThuongXuyen2 = new TextBox();
             textBoxDiemThuongXuyen3 = new TextBox();
-            labelDiemGK = new Label();
+            labelDiemGiuaKi = new Label();
             labelDiemCuoiKi = new Label();
             textBoxDiemGiuaKi = new TextBox();
             textBoxDiemCuoiKi = new TextBox();
+            groupBoxGioiTinh = new GroupBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)table).BeginInit();
+            groupBoxGioiTinh.SuspendLayout();
             SuspendLayout();
             // 
             // labelQueQuan
@@ -81,7 +83,6 @@ namespace DoAnCSharp
             labelQueQuan.Size = new Size(139, 38);
             labelQueQuan.TabIndex = 0;
             labelQueQuan.Text = "Quê quán";
-            labelQueQuan.Click += label1_Click;
             // 
             // labelTimKiemSinhVien
             // 
@@ -92,7 +93,6 @@ namespace DoAnCSharp
             labelTimKiemSinhVien.Size = new Size(249, 38);
             labelTimKiemSinhVien.TabIndex = 1;
             labelTimKiemSinhVien.Text = "Tìm kiếm sinh viên";
-            labelTimKiemSinhVien.Click += label2_Click;
             // 
             // comboBoxQueQuan
             // 
@@ -237,13 +237,13 @@ namespace DoAnCSharp
             textBoxMaSinhVienThem.TabIndex = 13;
             textBoxMaSinhVienThem.TextChanged += textBoxMaSinhVienThem_TextChanged;
             // 
-            // textBoxHoVaTenThem
+            // textBoxHoVaTen
             // 
-            textBoxHoVaTenThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxHoVaTenThem.Location = new Point(187, 633);
-            textBoxHoVaTenThem.Name = "textBoxHoVaTenThem";
-            textBoxHoVaTenThem.Size = new Size(223, 43);
-            textBoxHoVaTenThem.TabIndex = 14;
+            textBoxHoVaTen.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            textBoxHoVaTen.Location = new Point(187, 633);
+            textBoxHoVaTen.Name = "textBoxHoVaTen";
+            textBoxHoVaTen.Size = new Size(223, 43);
+            textBoxHoVaTen.TabIndex = 14;
             // 
             // labelQueQuanThem
             // 
@@ -401,7 +401,7 @@ namespace DoAnCSharp
             // 
             radioButtonNam.AutoSize = true;
             radioButtonNam.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            radioButtonNam.Location = new Point(598, 582);
+            radioButtonNam.Location = new Point(6, 18);
             radioButtonNam.Name = "radioButtonNam";
             radioButtonNam.Size = new Size(97, 42);
             radioButtonNam.TabIndex = 29;
@@ -414,7 +414,7 @@ namespace DoAnCSharp
             // 
             radioButtonNu.AutoSize = true;
             radioButtonNu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            radioButtonNu.Location = new Point(699, 582);
+            radioButtonNu.Location = new Point(150, 18);
             radioButtonNu.Name = "radioButtonNu";
             radioButtonNu.Size = new Size(75, 42);
             radioButtonNu.TabIndex = 30;
@@ -477,15 +477,15 @@ namespace DoAnCSharp
             textBoxDiemThuongXuyen3.Size = new Size(73, 43);
             textBoxDiemThuongXuyen3.TabIndex = 36;
             // 
-            // labelDiemGK
+            // labelDiemGiuaKi
             // 
-            labelDiemGK.AutoSize = true;
-            labelDiemGK.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemGK.Location = new Point(658, 638);
-            labelDiemGK.Name = "labelDiemGK";
-            labelDiemGK.Size = new Size(126, 38);
-            labelDiemGK.TabIndex = 37;
-            labelDiemGK.Text = "Điểm GK";
+            labelDiemGiuaKi.AutoSize = true;
+            labelDiemGiuaKi.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            labelDiemGiuaKi.Location = new Point(658, 638);
+            labelDiemGiuaKi.Name = "labelDiemGiuaKi";
+            labelDiemGiuaKi.Size = new Size(126, 38);
+            labelDiemGiuaKi.TabIndex = 37;
+            labelDiemGiuaKi.Text = "Điểm GK";
             // 
             // labelDiemCuoiKi
             // 
@@ -514,23 +514,33 @@ namespace DoAnCSharp
             textBoxDiemCuoiKi.Size = new Size(73, 43);
             textBoxDiemCuoiKi.TabIndex = 40;
             // 
+            // groupBoxGioiTinh
+            // 
+            groupBoxGioiTinh.Controls.Add(radioButtonNam);
+            groupBoxGioiTinh.Controls.Add(radioButtonNu);
+            groupBoxGioiTinh.Location = new Point(598, 564);
+            groupBoxGioiTinh.Name = "groupBoxGioiTinh";
+            groupBoxGioiTinh.Size = new Size(265, 68);
+            groupBoxGioiTinh.TabIndex = 41;
+            groupBoxGioiTinh.TabStop = false;
+            groupBoxGioiTinh.Enter += groupBox1_Enter;
+            // 
             // QLSVView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1015, 868);
+            Controls.Add(groupBoxGioiTinh);
             Controls.Add(textBoxDiemCuoiKi);
             Controls.Add(textBoxDiemGiuaKi);
             Controls.Add(labelDiemCuoiKi);
-            Controls.Add(labelDiemGK);
+            Controls.Add(labelDiemGiuaKi);
             Controls.Add(textBoxDiemThuongXuyen3);
             Controls.Add(textBoxDiemThuongXuyen2);
             Controls.Add(textBoxDiemThuongXuyen1);
             Controls.Add(labelDiemThuongXuyen3);
             Controls.Add(labelDiemThuongXuyen2);
             Controls.Add(labelDiemThuongXuyen1);
-            Controls.Add(radioButtonNu);
-            Controls.Add(radioButtonNam);
             Controls.Add(labelGioiTinh);
             Controls.Add(buttonHuyBo);
             Controls.Add(buttonLuu);
@@ -545,7 +555,7 @@ namespace DoAnCSharp
             Controls.Add(labelNgaySinh);
             Controls.Add(comboBoxQueQuanThem);
             Controls.Add(labelQueQuanThem);
-            Controls.Add(textBoxHoVaTenThem);
+            Controls.Add(textBoxHoVaTen);
             Controls.Add(textBoxMaSinhVienThem);
             Controls.Add(labelMaSinhVienThem);
             Controls.Add(labelThemHoacChinhSua);
@@ -563,10 +573,11 @@ namespace DoAnCSharp
             MainMenuStrip = menuStrip1;
             Name = "QLSVView";
             Text = "Quản lý sinh viên";
-            Load += themDuLieuVaoHaiCBB;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)table).EndInit();
+            groupBoxGioiTinh.ResumeLayout(false);
+            groupBoxGioiTinh.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -590,7 +601,7 @@ namespace DoAnCSharp
         private Label labelThemHoacChinhSua;
         private Label labelMaSinhVienThem;
         public TextBox textBoxMaSinhVienThem;
-        public TextBox textBoxHoVaTenThem;
+        public TextBox textBoxHoVaTen;
         private Label labelQueQuanThem;
         private ComboBox comboBoxQueQuanThem;
         private Label labelNgaySinh;
@@ -599,11 +610,11 @@ namespace DoAnCSharp
         public TextBox textBoxThang;
         private Label labelSetNgay;
         public TextBox textBoxNam;
-        private Button buttonThem;
-        private Button buttonChinhSua;
-        private Button buttonXoa;
-        private Button buttonLuu;
-        private Button buttonHuyBo;
+        public Button buttonThem;
+        public Button buttonChinhSua;
+        public Button buttonXoa;
+        public Button buttonLuu;
+        public Button buttonHuyBo;
         private Label labelHoVaTen;
         private Label labelGioiTinh;
         private RadioButton radioButtonNam;
@@ -614,10 +625,11 @@ namespace DoAnCSharp
         public TextBox textBoxDiemThuongXuyen1;
         public TextBox textBoxDiemThuongXuyen2;
         public TextBox textBoxDiemThuongXuyen3;
-        private Label labelDiemGK;
+        private Label labelDiemGiuaKi;
         private Label labelDiemCuoiKi;
         public TextBox textBoxDiemGiuaKi;
         public TextBox textBoxDiemCuoiKi;
         private QLSVModel model = new QLSVModel();
+        private GroupBox groupBoxGioiTinh;
     }
 }

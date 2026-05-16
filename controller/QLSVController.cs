@@ -16,13 +16,18 @@ namespace DoAnCSharp
             this.modelQLSV = new QLSVModel();
             // Controller Khoi chay du lieu
             LoadInitialData();
+            this.viewQLSV.buttonThem.Click += nhanNutThem;
         }
-
         private void LoadInitialData()
         {
             //Khoi tao du lieu cho comboBox
             List<Tinh> dsTinh = Tinh.getDSTinh();
             viewQLSV.capNhatDuLieuTinhVaoCBBQueQuan(dsTinh);
+        }
+        private void nhanNutThem(object sender, EventArgs e)
+        {
+            this.viewQLSV.xoaFormThongTin();
+            this.viewQLSV.batButtonThem();
         }
     }
 }

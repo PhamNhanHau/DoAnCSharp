@@ -29,8 +29,14 @@ namespace DoAnCSharp.Models
         }
         public QLSVModel()
         {
+            this.dsSinhVien = new List<SinhVien>();
         }
         //Ham chuc nang
+        public void themSinhVien(SinhVien sv) 
+        { 
+            this.dsSinhVien.Add(sv);
+        }
+
 
 
     }

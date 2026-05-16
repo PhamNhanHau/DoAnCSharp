@@ -16,19 +16,50 @@ namespace DoAnCSharp
             this.comboBoxQueQuanThem.DataSource = dsTinh;
             this.comboBoxQueQuanThem.DisplayMember = "TenTinh";
             this.comboBoxQueQuanThem.ValueMember = "MaTinh";
-            
-        }
-        private void themDuLieuVaoHaiCBB(object sender, EventArgs e)
-        {
-   
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
-        private void label2_Click(object sender, EventArgs e)
+        public void xoaFormThongTin()
         {
-
+            this.textBoxMaSinhVienThem.Text = string.Empty;
+            this.textBoxHoVaTen.Text = string.Empty;
+            this.comboBoxQueQuanThem.SelectedIndex = 0;
+            this.textBoxNgay.Text = string.Empty;
+            this.textBoxThang.Text = string.Empty;
+            this.textBoxNam.Text = string.Empty;
+            this.radioButtonNam.Checked = false;
+            this.radioButtonNu.Checked = false;
+            this.textBoxDiemThuongXuyen1.Text = string.Empty;
+            this.textBoxDiemThuongXuyen2.Text = string.Empty;
+            this.textBoxDiemThuongXuyen3.Text = string.Empty;
+            this.textBoxDiemGiuaKi.Text = string.Empty;
+            this.textBoxDiemCuoiKi.Text = string.Empty;
+        }
+        public void batButtonThem()
+        { 
+            buttonThem.BackColor = Color.LightGreen;
+            buttonThem.ForeColor = Color.White;
+            buttonChinhSua.BackColor = SystemColors.Control;
+            buttonXoa.BackColor = SystemColors.Control;
+        }
+        public void batButtonChinhSua()
+        {
+            buttonChinhSua.BackColor = Color.LightGreen;
+            buttonChinhSua.ForeColor = Color.White;
+            buttonThem.BackColor = SystemColors.Control;
+            buttonXoa.BackColor = SystemColors.Control;
+        }
+        public void batButtonXoa()
+        {
+            buttonXoa.BackColor = Color.LightGreen;
+            buttonXoa.ForeColor = Color.White;
+            buttonThem.BackColor = SystemColors.Control;
+            buttonChinhSua.BackColor = SystemColors.Control;
+        }
+        public void batButtonLuu()
+        {
+            buttonChinhSua.BackColor = SystemColors.Control;
+            buttonThem.BackColor = SystemColors.Control;
+            buttonXoa.BackColor = SystemColors.Control;
         }
         private void labelMaSinhVien_Click(object sender, EventArgs e)
         {
@@ -125,6 +156,11 @@ namespace DoAnCSharp
         }
 
         private void comboBoxQueQuan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
