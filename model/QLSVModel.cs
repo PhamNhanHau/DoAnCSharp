@@ -8,20 +8,7 @@ namespace DoAnCSharp.Models
     internal class QLSVModel
     {
         private List<SinhVien> dsSinhVien;
-        public List<SinhVien> DsSinhVien
-        {
-            get
-            {
-                return dsSinhVien;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    dsSinhVien = value;
-                }
-            }
-        }
+        public List<SinhVien> DsSinhVien { get; set; } = new List<SinhVien>();
         //Constructor
         public QLSVModel(List<SinhVien> dsSinhVien)
         {

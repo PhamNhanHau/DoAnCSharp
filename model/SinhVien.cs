@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 namespace DoAnCSharp.Models
 {
-    class SinhVien
+    public class SinhVien
     {
         private int maSinhVien;
         public int MaSinhVien 

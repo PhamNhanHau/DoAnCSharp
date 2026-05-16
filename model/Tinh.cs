@@ -112,5 +112,13 @@ namespace DoAnCSharp.Models
             }
             return listTinh;
         }
+        public static Tinh getTinhById(int queQuan)
+        {
+            return Tinh.getDSTinh().FirstOrDefault(t => t.maTinh == queQuan);
+        }
+        public static Tinh getTinhByTen(string tenTinh)
+        {
+            return Tinh.getDSTinh().FirstOrDefault(t => t.tenTinh == tenTinh);
+        }
     }
 }

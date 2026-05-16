@@ -102,7 +102,6 @@ namespace DoAnCSharp
             comboBoxQueQuan.Name = "comboBoxQueQuan";
             comboBoxQueQuan.Size = new Size(222, 45);
             comboBoxQueQuan.TabIndex = 2;
-            comboBoxQueQuan.SelectedIndexChanged += comboBoxQueQuan_SelectedIndexChanged;
             // 
             // labelMaSinhVien
             // 
@@ -113,7 +112,6 @@ namespace DoAnCSharp
             labelMaSinhVien.Size = new Size(174, 38);
             labelMaSinhVien.TabIndex = 3;
             labelMaSinhVien.Text = "Mã sinh viên";
-            labelMaSinhVien.Click += labelMaSinhVien_Click;
             // 
             // textBoxMaSinhVien
             // 
@@ -122,7 +120,6 @@ namespace DoAnCSharp
             textBoxMaSinhVien.Name = "textBoxMaSinhVien";
             textBoxMaSinhVien.Size = new Size(169, 43);
             textBoxMaSinhVien.TabIndex = 4;
-            textBoxMaSinhVien.TextChanged += textBox1_TextChanged;
             // 
             // buttonTim
             // 
@@ -195,7 +192,6 @@ namespace DoAnCSharp
             table.RowHeadersWidth = 51;
             table.Size = new Size(991, 349);
             table.TabIndex = 8;
-            table.CellContentClick += table_CellContentClick;
             // 
             // labelDanhSachSinhVien
             // 
@@ -226,7 +222,6 @@ namespace DoAnCSharp
             labelMaSinhVienThem.Size = new Size(174, 38);
             labelMaSinhVienThem.TabIndex = 12;
             labelMaSinhVienThem.Text = "Mã sinh viên";
-            labelMaSinhVienThem.Click += labelMaSinhVienThem_Click;
             // 
             // textBoxMaSinhVienThem
             // 
@@ -235,7 +230,6 @@ namespace DoAnCSharp
             textBoxMaSinhVienThem.Name = "textBoxMaSinhVienThem";
             textBoxMaSinhVienThem.Size = new Size(223, 43);
             textBoxMaSinhVienThem.TabIndex = 13;
-            textBoxMaSinhVienThem.TextChanged += textBoxMaSinhVienThem_TextChanged;
             // 
             // textBoxHoVaTen
             // 
@@ -291,7 +285,6 @@ namespace DoAnCSharp
             labelSetThang.Size = new Size(28, 38);
             labelSetThang.TabIndex = 19;
             labelSetThang.Text = "/";
-            labelSetThang.Click += label4_Click;
             // 
             // textBoxThang
             // 
@@ -300,7 +293,6 @@ namespace DoAnCSharp
             textBoxThang.Name = "textBoxThang";
             textBoxThang.Size = new Size(45, 43);
             textBoxThang.TabIndex = 20;
-            textBoxThang.TextChanged += textBox2_TextChanged;
             // 
             // labelSetNgay
             // 
@@ -311,7 +303,6 @@ namespace DoAnCSharp
             labelSetNgay.Size = new Size(28, 38);
             labelSetNgay.TabIndex = 21;
             labelSetNgay.Text = "/";
-            labelSetNgay.Click += label4_Click_1;
             // 
             // textBoxNam
             // 
@@ -320,7 +311,6 @@ namespace DoAnCSharp
             textBoxNam.Name = "textBoxNam";
             textBoxNam.Size = new Size(85, 43);
             textBoxNam.TabIndex = 22;
-            textBoxNam.TextChanged += textBox3_TextChanged;
             // 
             // buttonThem
             // 
@@ -341,7 +331,6 @@ namespace DoAnCSharp
             buttonChinhSua.TabIndex = 24;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = true;
-            buttonChinhSua.Click += buttonChinhSua_Click;
             // 
             // buttonXoa
             // 
@@ -352,7 +341,6 @@ namespace DoAnCSharp
             buttonXoa.TabIndex = 25;
             buttonXoa.Text = "Xóa";
             buttonXoa.UseVisualStyleBackColor = true;
-            buttonXoa.Click += button1_Click;
             // 
             // buttonLuu
             // 
@@ -363,7 +351,6 @@ namespace DoAnCSharp
             buttonLuu.TabIndex = 26;
             buttonLuu.Text = "Lưu";
             buttonLuu.UseVisualStyleBackColor = true;
-            buttonLuu.Click += button2_Click;
             // 
             // buttonHuyBo
             // 
@@ -384,7 +371,6 @@ namespace DoAnCSharp
             labelHoVaTen.Size = new Size(136, 38);
             labelHoVaTen.TabIndex = 10;
             labelHoVaTen.Text = "Họ và tên";
-            labelHoVaTen.Click += label1_Click_2;
             // 
             // labelGioiTinh
             // 
@@ -395,7 +381,6 @@ namespace DoAnCSharp
             labelGioiTinh.Size = new Size(129, 38);
             labelGioiTinh.TabIndex = 28;
             labelGioiTinh.Text = "Giới Tính";
-            labelGioiTinh.Click += label4_Click_2;
             // 
             // radioButtonNam
             // 
@@ -408,7 +393,6 @@ namespace DoAnCSharp
             radioButtonNam.TabStop = true;
             radioButtonNam.Text = "Nam";
             radioButtonNam.UseVisualStyleBackColor = true;
-            radioButtonNam.CheckedChanged += radioButtonNam_CheckedChanged;
             // 
             // radioButtonNu
             // 
@@ -459,7 +443,6 @@ namespace DoAnCSharp
             textBoxDiemThuongXuyen1.Name = "textBoxDiemThuongXuyen1";
             textBoxDiemThuongXuyen1.Size = new Size(73, 43);
             textBoxDiemThuongXuyen1.TabIndex = 34;
-            textBoxDiemThuongXuyen1.TextChanged += textBox1_TextChanged_1;
             // 
             // textBoxDiemThuongXuyen2
             // 
@@ -504,7 +487,6 @@ namespace DoAnCSharp
             textBoxDiemGiuaKi.Name = "textBoxDiemGiuaKi";
             textBoxDiemGiuaKi.Size = new Size(73, 43);
             textBoxDiemGiuaKi.TabIndex = 39;
-            textBoxDiemGiuaKi.TextChanged += textBox4_TextChanged;
             // 
             // textBoxDiemCuoiKi
             // 
@@ -523,7 +505,6 @@ namespace DoAnCSharp
             groupBoxGioiTinh.Size = new Size(265, 68);
             groupBoxGioiTinh.TabIndex = 41;
             groupBoxGioiTinh.TabStop = false;
-            groupBoxGioiTinh.Enter += groupBox1_Enter;
             // 
             // QLSVView
             // 
@@ -584,26 +565,25 @@ namespace DoAnCSharp
         #endregion
         private Label labelQueQuan;
         private Label labelTimKiemSinhVien;
-        private ComboBox comboBoxQueQuan;
+        public ComboBox comboBoxQueQuan;
         private Label labelMaSinhVien;
-        private Button button2;
         public TextBox textBoxMaSinhVien;
         public Button buttonTim;
         public Button buttonHuyTim;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem aboutMeToolStripMenuItem;
-        private ToolStripMenuItem openToolStripMenuItem;
-        private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem closeToolStripMenuItem;
-        private DataGridView table;
+        public MenuStrip menuStrip1;
+        public ToolStripMenuItem fileToolStripMenuItem;
+        public ToolStripMenuItem aboutMeToolStripMenuItem;
+        public ToolStripMenuItem openToolStripMenuItem;
+        public ToolStripMenuItem saveToolStripMenuItem;
+        public ToolStripMenuItem closeToolStripMenuItem;
+        public DataGridView table;
         private Label labelDanhSachSinhVien;
         private Label labelThemHoacChinhSua;
         private Label labelMaSinhVienThem;
         public TextBox textBoxMaSinhVienThem;
         public TextBox textBoxHoVaTen;
         private Label labelQueQuanThem;
-        private ComboBox comboBoxQueQuanThem;
+        public ComboBox comboBoxQueQuanThem;
         private Label labelNgaySinh;
         public TextBox textBoxNgay;
         private Label labelSetThang;
@@ -617,8 +597,8 @@ namespace DoAnCSharp
         public Button buttonHuyBo;
         private Label labelHoVaTen;
         private Label labelGioiTinh;
-        private RadioButton radioButtonNam;
-        private RadioButton radioButtonNu;
+        public RadioButton radioButtonNam;
+        public RadioButton radioButtonNu;
         private Label labelDiemThuongXuyen1;
         private Label labelDiemThuongXuyen2;
         private Label labelDiemThuongXuyen3;
