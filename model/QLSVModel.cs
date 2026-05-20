@@ -23,9 +23,6 @@ namespace DoAnCSharp.Models
         { 
             this.dsSinhVien.Add(sv);
         }
-
-
-
     }
     
 }

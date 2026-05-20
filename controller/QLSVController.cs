@@ -1,6 +1,7 @@
 ﻿using DoAnCSharp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -24,6 +25,8 @@ namespace DoAnCSharp
             //Khoi tao du lieu cho comboBox
             List<Tinh> dsTinh = Tinh.getDSTinh();
             viewQLSV.capNhatDuLieuTinhVaoCBBQueQuan(dsTinh);
+            viewQLSV.capNhatDulieuVaoDataGridView();
+           
         }   
         //Chuc nang them
         private void nhanNutThem(object sender, EventArgs e)
@@ -68,9 +71,8 @@ namespace DoAnCSharp
         private void nhanNutLuu(object sender, EventArgs e)
         {
             this.ThucHienThemSinhVien();
-            viewQLSV.capNhatTable(modelQLSV.DsSinhVien);
+            BindingList<SinhVien> bindingListSV = new BindingList<SinhVien>(this.modelQLSV.DsSinhVien);
+            this.viewQLSV.themSinhVienVaoTable(bindingListSV);
         }
-
-
     }
 }

@@ -195,5 +195,10 @@ namespace DoAnCSharp.Models
             SinhVien other = (SinhVien)obj;
             return this.maSinhVien == other.maSinhVien;
         }
+        //Ham lay gioi tinh text
+        public string gioiTinhText
+        {
+            get { return gioiTinh ? "Nam" : "Nữ"; }
+        }
     }
 }
