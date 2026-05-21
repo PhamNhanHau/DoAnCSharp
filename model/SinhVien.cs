@@ -235,7 +235,5 @@ namespace DoAnCSharp.Models
         {
             throw new ArgumentException("Điểm số phải nằm trong khoảng từ 0 đến 10");
         }
-
-       
     }
 }
