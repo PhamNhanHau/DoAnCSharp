@@ -89,40 +89,42 @@ namespace DoAnCSharp
             this.viewQLSV.batButtonLuu();
         }
         private void ThucHienThemSinhVien()
-        { 
-            int maSinhVien = int.Parse(viewQLSV.textBoxMaSinhVienThem.Text.Trim());
-            string hoVaTen = viewQLSV.textBoxHoVaTen.Text.Trim();
-
-            string tinh = viewQLSV.comboBoxQueQuanThem.Text.Trim();
-            Tinh queQuan = Tinh.getTinhByTen(tinh);
-
-            string chuoiGioiTinh = viewQLSV.radioButtonNam.Checked ? "Nam" : "Nữ";
-            bool gioiTinh = chuoiGioiTinh.Equals("Nam");
-
-            string chuoiNgaySinh = $"{viewQLSV.textBoxNgay.Text.Trim()}/{viewQLSV.textBoxThang.Text.Trim()}/{viewQLSV.textBoxNam.Text.Trim()}";
-            DateTime ngaySinh = new DateTime(2000, 1, 1);
+        {
             try
             {
+                int maSinhVien = int.Parse(viewQLSV.textBoxMaSinhVienThem.Text.Trim());
+                string hoVaTen = viewQLSV.textBoxHoVaTen.Text.Trim();
+
+                string tinh = viewQLSV.comboBoxQueQuanThem.Text.Trim();
+                Tinh queQuan = Tinh.getTinhByTen(tinh);
+
+                string chuoiGioiTinh = viewQLSV.radioButtonNam.Checked ? "Nam" : "Nữ";
+                bool gioiTinh = chuoiGioiTinh.Equals("Nam");
+
+                string chuoiNgaySinh = $"{viewQLSV.textBoxNgay.Text.Trim()}/{viewQLSV.textBoxThang.Text.Trim()}/{viewQLSV.textBoxNam.Text.Trim()}";
+                DateTime ngaySinh = new DateTime(2000, 1, 1);
+
                 int ngay = int.Parse(viewQLSV.textBoxNgay.Text.Trim());
                 int thang = int.Parse(viewQLSV.textBoxThang.Text.Trim());
                 int nam = int.Parse(viewQLSV.textBoxNam.Text.Trim());
                 ngaySinh = new DateTime(nam, thang, ngay);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ngày tháng năm không hợp lệ! Vui lòng kiểm tra lại.");
-            }
-            float diemtThuongXuyen1 = float.Parse(viewQLSV.textBoxDiemThuongXuyen1.Text.Trim());
-            float diemtThuongXuyen2 = float.Parse(viewQLSV.textBoxDiemThuongXuyen2.Text.Trim());
-            float diemtThuongXuyen3 = float.Parse(viewQLSV.textBoxDiemThuongXuyen3.Text.Trim());
-            float diemGiuaKi = float.Parse(viewQLSV.textBoxDiemGiuaKi.Text);
-            float diemCuoiKi = float.Parse(viewQLSV.textBoxDiemCuoiKi.Text);
 
-            SinhVien sv = new SinhVien(maSinhVien, hoVaTen, queQuan, ngaySinh, gioiTinh, diemtThuongXuyen1, diemtThuongXuyen2, diemtThuongXuyen3, diemGiuaKi, diemCuoiKi);
-            this.modelQLSV.themSinhVien(sv);
-            if (this.bindingListSV != null)
+                float diemtThuongXuyen1 = float.Parse(viewQLSV.textBoxDiemThuongXuyen1.Text.Trim());
+                float diemtThuongXuyen2 = float.Parse(viewQLSV.textBoxDiemThuongXuyen2.Text.Trim());
+                float diemtThuongXuyen3 = float.Parse(viewQLSV.textBoxDiemThuongXuyen3.Text.Trim());
+                float diemGiuaKi = float.Parse(viewQLSV.textBoxDiemGiuaKi.Text);
+                float diemCuoiKi = float.Parse(viewQLSV.textBoxDiemCuoiKi.Text);
+
+                SinhVien sv = new SinhVien(maSinhVien, hoVaTen, queQuan, ngaySinh, gioiTinh, diemtThuongXuyen1, diemtThuongXuyen2, diemtThuongXuyen3, diemGiuaKi, diemCuoiKi);
+                this.modelQLSV.themSinhVien(sv);
+                if (this.bindingListSV != null)
+                {
+                    this.bindingListSV.Add(sv);
+                }
+            }
+            catch (Exception e)
             {
-                this.bindingListSV.Add(sv);
+                MessageBox.Show(e.Message);
             }
         }
         //Chuc nang huy tim
@@ -171,10 +173,6 @@ namespace DoAnCSharp
                 this.bindingListTimKiem.Add(sv);
             }
             //khong co sinh vien nao dung ket qua
-            if (bindingListTimKiem.Count == 0)
-            {
-                MessageBox.Show("Không tìm thấy sinh viên nào thỏa mãn điều kiện!", "Kết quả");
-            }
             this.viewQLSV.table.DataSource = bindingListTimKiem;
         }
     }
