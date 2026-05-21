@@ -22,11 +22,6 @@ namespace DoAnCSharp
             this.comboBoxQueQuanThem.DisplayMember = "TenTinh";
             this.comboBoxQueQuanThem.ValueMember = "MaTinh";
 
-
-
-
-
-
         }
         public void xoaFormThongTin()
         {
@@ -69,9 +64,21 @@ namespace DoAnCSharp
         }
         public void batButtonLuu()
         {
-            buttonChinhSua.BackColor = SystemColors.Control;
-            buttonThem.BackColor = SystemColors.Control;
-            buttonXoa.BackColor = SystemColors.Control;
+            if (buttonThem.BackColor == Color.LightGreen)
+            {
+                buttonChinhSua.BackColor = SystemColors.Control;
+                buttonXoa.BackColor = SystemColors.Control;
+            } 
+            else if (buttonChinhSua.BackColor == Color.LightGreen)
+            {
+                buttonThem.BackColor = SystemColors.Control;
+                buttonXoa.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                buttonThem.BackColor = SystemColors.Control;
+                buttonChinhSua.BackColor = SystemColors.Control;
+            }
         }
         public void batButtonHuyBo()
         {
@@ -85,7 +92,7 @@ namespace DoAnCSharp
         }
         public void batButtonHuyTim()
         {
-            buttonTim.BackColor= SystemColors.Control;
+            buttonTim.BackColor = SystemColors.Control;
         }
         public void capNhatDulieuVaoDataGridView()
         {

@@ -16,7 +16,7 @@ namespace DoAnCSharp.Models
             set { chucNang = value; }
         }
         public List<SinhVien> DsSinhVien { get; set; } = new List<SinhVien>();
-        //Constrtor
+        //Constructor
         public QLSVModel(List<SinhVien> dsSinhVien)
         {
             this.dsSinhVien = dsSinhVien;

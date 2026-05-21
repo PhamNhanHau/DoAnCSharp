@@ -613,7 +613,6 @@ namespace DoAnCSharp
         private Label labelDiemCuoiKi;
         public TextBox textBoxDiemGiuaKi;
         public TextBox textBoxDiemCuoiKi;
-        private QLSVModel model = new QLSVModel();
         private GroupBox groupBoxGioiTinh;
     }
 }

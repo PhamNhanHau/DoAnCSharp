@@ -94,6 +94,10 @@ namespace DoAnCSharp.Models
                 {
                     diemThuongXuyen1 = value;
                 }
+                else
+                {
+                    loiDiem();
+                }
             }
         }
         private float diemThuongXuyen2;
@@ -109,6 +113,11 @@ namespace DoAnCSharp.Models
                 {
                     diemThuongXuyen2 = value;
                 }
+                else
+                {
+                    loiDiem();
+                }
+
             }
         }
         private float diemThuongXuyen3;
@@ -123,6 +132,10 @@ namespace DoAnCSharp.Models
                 if (value >= 0 && value <= 10)
                 {
                     diemThuongXuyen3 = value;
+                }
+                else
+                {
+                    loiDiem();
                 }
             }
         }
@@ -139,6 +152,10 @@ namespace DoAnCSharp.Models
                 {
                     diemGiuaKi = value;
                 }
+                else
+                {
+                    loiDiem();
+                }
             }
         }
         private float diemCuoiKi;
@@ -153,6 +170,10 @@ namespace DoAnCSharp.Models
                 if (value >= 0 && value <= 10)
                 {
                     diemCuoiKi = value;
+                }
+                else
+                {
+                    loiDiem();
                 }
             }
         }
@@ -196,6 +217,10 @@ namespace DoAnCSharp.Models
         public string GioiTinhText
         {
             get { return gioiTinh ? "Nam" : "Nữ"; }
+        }
+        public void loiDiem()
+        {
+            throw new ArgumentException("Điểm số phải nằm trong khoảng từ 0 đến 10");
         }
        
     }
