@@ -17,7 +17,7 @@ namespace DoAnCSharp
             this.comboBoxQueQuan.DisplayMember = "TenTinh"; //Thuoc tinh hien thi
             this.comboBoxQueQuan.ValueMember = "MaTinh";    //Thuoc tinh gia tri
 
-            
+
             this.comboBoxQueQuanThem.DataSource = new BindingSource(dsTinh, null);
             this.comboBoxQueQuanThem.DisplayMember = "TenTinh";
             this.comboBoxQueQuanThem.ValueMember = "MaTinh";
@@ -68,7 +68,7 @@ namespace DoAnCSharp
             {
                 buttonChinhSua.BackColor = SystemColors.Control;
                 buttonXoa.BackColor = SystemColors.Control;
-            } 
+            }
             else if (buttonChinhSua.BackColor == Color.LightGreen)
             {
                 buttonThem.BackColor = SystemColors.Control;
@@ -254,6 +254,5 @@ namespace DoAnCSharp
                 throw new Exception("Chưa chọn giới tính");
             }
         }
-
     }
 }

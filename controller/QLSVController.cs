@@ -27,7 +27,7 @@ namespace DoAnCSharp
             this.viewQLSV.buttonHuyBo.Click += nhanNutHuyBo;
             this.viewQLSV.buttonHuyTim.Click += nhanNutHuyTim;
             this.viewQLSV.buttonTim.Click += nhanNutTimKiem;
-
+            this.viewQLSV.fileToolStripMenuItem.Click += nhanNutSaveFile;
         }
         private void LoadInitialData()
         {
@@ -177,6 +177,10 @@ namespace DoAnCSharp
             }
             //khong co sinh vien nao dung ket qua
             this.viewQLSV.table.DataSource = bindingListTimKiem;
+        }
+        private void nhanNutSaveFile(object sender, EventArgs e)
+        {
+
         }
     }
 
