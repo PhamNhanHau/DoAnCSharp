@@ -79,10 +79,6 @@ namespace DoAnCSharp.Models
                 {
                     this.ngaySinh = value;
                 }
-                else
-                {
-                    Console.WriteLine("Ngày không hợp lệ hoặc đang để trống.");
-                }
             }
         }
         private float diemThuongXuyen1;

@@ -14,7 +14,7 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value > 0)
+                if (value > 0 && value <35)
                 {
                     maTinh = value;
                 }
