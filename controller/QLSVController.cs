@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Linq;
 
 namespace DoAnCSharp
 {
@@ -12,6 +13,7 @@ namespace DoAnCSharp
         private QLSVView viewQLSV;
         private QLSVModel modelQLSV;
         private BindingList<SinhVien> bindingListSV;
+        private BindingList<SinhVien> bindingListTimKiem;
         public QLSVController(QLSVView view)
         {
             this.viewQLSV = view;
@@ -23,6 +25,9 @@ namespace DoAnCSharp
             this.viewQLSV.buttonChinhSua.Click += nhanNutChinhSua;
             this.viewQLSV.buttonXoa.Click += nhanNutXoa;
             this.viewQLSV.buttonHuyBo.Click += nhanNutHuyBo;
+            this.viewQLSV.buttonHuyTim.Click += nhanNutHuyTim;
+            this.viewQLSV.buttonTim.Click += nhanNutTimKiem;
+
         }
         private void LoadInitialData()
         {
@@ -119,8 +124,59 @@ namespace DoAnCSharp
             {
                 this.bindingListSV.Add(sv);
             }
-            
         }
-        
+        //Chuc nang huy tim
+        private void nhanNutHuyTim(object sender, EventArgs e)
+        {
+            this.viewQLSV.xoaFormTimKiem();
+            this.viewQLSV.batButtonHuyTim();
+            this.viewQLSV.table.DataSource = bindingListSV;
+        }
+        //Chuc nang tim
+        private void nhanNutTimKiem(object sender, EventArgs e)
+        {
+            this.viewQLSV.batButtonTimKiem();
+            this.bindingListTimKiem = new BindingList<SinhVien>();
+            //lay du lieu tu 2 o tim kiem
+            string queQuanCanTim = viewQLSV.comboBoxQueQuan.Text.Trim();
+            string maSVText = viewQLSV.textBoxMaSinhVien.Text.Trim();
+
+            //Ep ve dang IEnumerable de dung LINQ
+            var ketQuaLoc = this.modelQLSV.DsSinhVien.AsEnumerable();
+
+            //Neu nguoi dung chi chon que quan
+            ketQuaLoc = ketQuaLoc.Where(sv => sv.QueQuan != null && sv.QueQuan.TenTinh.Equals(queQuanCanTim, StringComparison.OrdinalIgnoreCase));
+
+            //Neu co nhap ma sinh vien
+            if (!string.IsNullOrEmpty(maSVText))
+            {
+                if (int.TryParse(maSVText, out int maSVCanTim))
+                {
+                    ketQuaLoc = ketQuaLoc.Where(sv => sv.MaSinhVien == maSVCanTim);
+                }
+                else
+                {
+                    MessageBox.Show("Mã sinh viên tìm kiếm phải là số!", "Thông báo");
+                    return;
+                }
+            }
+
+            //Cho du lieu tim kiem vao mot lis moi
+            List<SinhVien> danhSachSauKhiLoc = ketQuaLoc.ToList();
+
+            //Cap nhat vao datagridview
+            this.bindingListTimKiem.Clear();
+            foreach (var sv in danhSachSauKhiLoc)
+            {
+                this.bindingListTimKiem.Add(sv);
+            }
+            //khong co sinh vien nao dung ket qua
+            if (bindingListTimKiem.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy sinh viên nào thỏa mãn điều kiện!", "Kết quả");
+            }
+            this.viewQLSV.table.DataSource = bindingListTimKiem;
+        }
     }
+
 }

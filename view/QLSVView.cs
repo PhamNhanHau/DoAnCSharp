@@ -35,6 +35,11 @@ namespace DoAnCSharp
             this.textBoxDiemGiuaKi.Text = string.Empty;
             this.textBoxDiemCuoiKi.Text = string.Empty;
         }
+        public void xoaFormTimKiem()
+        {
+            this.textBoxMaSinhVien.Text = string.Empty;
+            this.comboBoxQueQuan.SelectedIndex = 0;
+        }
         public void batButtonThem()
         {
             buttonThem.BackColor = Color.LightGreen;
@@ -64,6 +69,14 @@ namespace DoAnCSharp
             buttonChinhSua.BackColor = SystemColors.Control;
             buttonThem.BackColor = SystemColors.Control;
             buttonXoa.BackColor = SystemColors.Control;
+        }
+        public void batButtonTimKiem()
+        {
+            buttonTim.BackColor = Color.LightGreen;
+        }
+        public void batButtonHuyTim()
+        {
+            buttonTim.BackColor= SystemColors.Control;
         }
         public void capNhatDulieuVaoDataGridView()
         {
