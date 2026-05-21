@@ -5,7 +5,7 @@ namespace DoAnCSharp.Models
     public class SinhVien
     {
         private int maSinhVien;
-        public int MaSinhVien 
+        public int MaSinhVien
         {
             get
             {
@@ -67,23 +67,24 @@ namespace DoAnCSharp.Models
             }
         }
         private DateTime ngaySinh;
-        public DateTime getNgaySinh()
+        public DateTime NgaySinh
         {
-            return ngaySinh;
-        }
-        public void setNgaySinh(DateTime inputDate)
-        {
-            
-            if (inputDate >= DateTime.MinValue)
+            get
             {
-                this.ngaySinh = inputDate;
+                return ngaySinh;
             }
-            else
+            set
             {
-                Console.WriteLine("Ngày không hợp lệ hoặc đang để trống.");
+                if (value >= DateTime.MinValue)
+                {
+                    this.ngaySinh = value;
+                }
+                else
+                {
+                    Console.WriteLine("Ngày không hợp lệ hoặc đang để trống.");
+                }
             }
         }
-
         private float diemThuongXuyen1;
         public float DiemThuongXuyen1
         {
@@ -165,16 +166,16 @@ namespace DoAnCSharp.Models
         }
         public SinhVien(int maSinhVien, string tenSinhVien,Tinh queQuan, DateTime ngaySinh,bool gioiTinh, float diemThuongXuyen1, float diemThuongXuyen2, float diemThuongXuyen3, float diemGiuaKi, float diemCuoiKi)
         {
-            this.maSinhVien = maSinhVien;
-            this.tenSinhVien =tenSinhVien;
-            this.queQuan = queQuan;
-            this.ngaySinh = ngaySinh;
-            this.gioiTinh = gioiTinh;
-            this.diemThuongXuyen1 = diemThuongXuyen1;
-            this.diemThuongXuyen2 = diemThuongXuyen2;
-            this.diemThuongXuyen3 = diemThuongXuyen3;
-            this.diemGiuaKi = diemGiuaKi;
-            this.diemCuoiKi = diemCuoiKi;
+            this.MaSinhVien = maSinhVien;
+            this.TenSinhVien =tenSinhVien;
+            this.QueQuan = queQuan;
+            this.NgaySinh = ngaySinh;
+            this.GioiTinh = gioiTinh;
+            this.DiemThuongXuyen1 = diemThuongXuyen1;
+            this.DiemThuongXuyen2 = diemThuongXuyen2;
+            this.DiemThuongXuyen3 = diemThuongXuyen3;
+            this.DiemGiuaKi = diemGiuaKi;
+            this.DiemCuoiKi = diemCuoiKi;
         } 
         //toString
         public override string ToString()
@@ -196,7 +197,7 @@ namespace DoAnCSharp.Models
             return this.maSinhVien == other.maSinhVien;
         }
         //Ham lay gioi tinh text
-        public string gioiTinhText
+        public string GioiTinhText
         {
             get { return gioiTinh ? "Nam" : "Nữ"; }
         }

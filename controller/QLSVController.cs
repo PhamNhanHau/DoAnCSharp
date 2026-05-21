@@ -11,6 +11,7 @@ namespace DoAnCSharp
     {
         private QLSVView viewQLSV;
         private QLSVModel modelQLSV;
+        private BindingList<SinhVien> bindingListSV;
         public QLSVController(QLSVView view)
         {
             this.viewQLSV = view;
@@ -26,7 +27,9 @@ namespace DoAnCSharp
             List<Tinh> dsTinh = Tinh.getDSTinh();
             viewQLSV.capNhatDuLieuTinhVaoCBBQueQuan(dsTinh);
             viewQLSV.capNhatDulieuVaoDataGridView();
-           
+            bindingListSV = new BindingList<SinhVien>(this.modelQLSV.DsSinhVien);
+            this.viewQLSV.themSinhVienVaoTable(bindingListSV);
+
         }   
         //Chuc nang them
         private void nhanNutThem(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace DoAnCSharp
         //Chuc nang luu
         private void ThucHienThemSinhVien()
         { 
-            int maSinhVien = int.Parse(viewQLSV.textBoxDiemThuongXuyen1.Text.Trim());
+            int maSinhVien = int.Parse(viewQLSV.textBoxMaSinhVienThem.Text.Trim());
             string hoVaTen = viewQLSV.textBoxHoVaTen.Text.Trim();
 
             string tinh = viewQLSV.comboBoxQueQuanThem.Text.Trim();
@@ -66,13 +69,21 @@ namespace DoAnCSharp
             float diemCuoiKi = float.Parse(viewQLSV.textBoxDiemCuoiKi.Text);
 
             SinhVien sv = new SinhVien(maSinhVien, hoVaTen, queQuan, ngaySinh, gioiTinh, diemtThuongXuyen1, diemtThuongXuyen2, diemtThuongXuyen3, diemGiuaKi, diemCuoiKi);
-            modelQLSV.themSinhVien(sv);
+            this.modelQLSV.themSinhVien(sv);
+            if (this.bindingListSV != null)
+            {
+                this.bindingListSV.Add(sv);
+            }
+            else
+            {
+                this.modelQLSV.themSinhVien(sv);
+            }
         }
         private void nhanNutLuu(object sender, EventArgs e)
         {
             this.ThucHienThemSinhVien();
-            BindingList<SinhVien> bindingListSV = new BindingList<SinhVien>(this.modelQLSV.DsSinhVien);
-            this.viewQLSV.themSinhVienVaoTable(bindingListSV);
+            this.viewQLSV.batButtonLuu();
+            Console.WriteLine(this.modelQLSV.ToString);
         }
     }
 }

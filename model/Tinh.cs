@@ -41,13 +41,13 @@ namespace DoAnCSharp.Models
         }
         public Tinh(int maTinh, string tenTinh)
         {
-            this.maTinh = maTinh;
-            this.tenTinh = tenTinh;
+            this.MaTinh = maTinh;
+            this.TenTinh = tenTinh;
         }
         //toString
         public override string ToString()
         {
-            return $"Tỉnh: {tenTinh}, Mã tỉnh: {maTinh} ";
+            return $"{tenTinh}";
         }
         //Hashcode và Equals
         public override int GetHashCode()

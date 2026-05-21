@@ -38,21 +38,18 @@ namespace DoAnCSharp
         public void batButtonThem()
         {
             buttonThem.BackColor = Color.LightGreen;
-            buttonThem.ForeColor = Color.White;
             buttonChinhSua.BackColor = SystemColors.Control;
             buttonXoa.BackColor = SystemColors.Control;
         }
         public void batButtonChinhSua()
         {
             buttonChinhSua.BackColor = Color.LightGreen;
-            buttonChinhSua.ForeColor = Color.White;
             buttonThem.BackColor = SystemColors.Control;
             buttonXoa.BackColor = SystemColors.Control;
         }
         public void batButtonXoa()
         {
             buttonXoa.BackColor = Color.LightGreen;
-            buttonXoa.ForeColor = Color.White;
             buttonThem.BackColor = SystemColors.Control;
             buttonChinhSua.BackColor = SystemColors.Control;
         }
@@ -80,13 +77,13 @@ namespace DoAnCSharp
             DataGridViewTextBoxColumn colHoTen = new DataGridViewTextBoxColumn();
             colHoTen.DataPropertyName = "TenSinhVien";
             colHoTen.HeaderText = "Họ và Tên";
-            colHoTen.Width = 150;
+            colHoTen.Width = 200;
             this.table.Columns.Add(colHoTen);
 
             DataGridViewTextBoxColumn colGioiTinh = new DataGridViewTextBoxColumn();
             colGioiTinh.DataPropertyName = "GioiTinh";
             colGioiTinh.HeaderText = "Giới Tính";
-            colGioiTinh.Width = 80;
+            colGioiTinh.Width = 70;
             this.table.Columns.Add(colGioiTinh);
 
             DataGridViewTextBoxColumn colQueQuan = new DataGridViewTextBoxColumn();
@@ -105,43 +102,75 @@ namespace DoAnCSharp
             DataGridViewTextBoxColumn colTX1 = new DataGridViewTextBoxColumn();
             colTX1.DataPropertyName = "DiemThuongXuyen1";
             colTX1.HeaderText = "Điểm TX1";
-            colTX1.Width = 75;
+            colTX1.Width = 60;
             this.table.Columns.Add(colTX1);
 
             DataGridViewTextBoxColumn colTX2 = new DataGridViewTextBoxColumn();
             colTX2.DataPropertyName = "DiemThuongXuyen2";
             colTX2.HeaderText = "Điểm TX2";
-            colTX2.Width = 75;
+            colTX2.Width = 60;
             this.table.Columns.Add(colTX2);
 
             DataGridViewTextBoxColumn colTX3 = new DataGridViewTextBoxColumn();
             colTX3.DataPropertyName = "DiemThuongXuyen3";
             colTX3.HeaderText = "Điểm TX3";
-            colTX3.Width = 75;
+            colTX3.Width = 60;
             this.table.Columns.Add(colTX3);
 
             DataGridViewTextBoxColumn colGK = new DataGridViewTextBoxColumn();
             colGK.DataPropertyName = "DiemGiuaKi";
             colGK.HeaderText = "Điểm GK";
-            colGK.Width = 75;
+            colGK.Width = 60;
             this.table.Columns.Add(colGK);
 
             DataGridViewTextBoxColumn colCK = new DataGridViewTextBoxColumn();
             colCK.DataPropertyName = "DiemCuoiKi";
             colCK.HeaderText = "Điểm CK";
-            colCK.Width = 75;
+            colCK.Width = 60;
             this.table.Columns.Add(colCK);
 
             this.table.AutoGenerateColumns = false; //Ngan khong tao them dong moi
             this.table.AllowUserToAddRows = false; //Ngan them du lieu bang cach bam vao bang
             this.table.ReadOnly = true;            // Che do chi doc phai chinh sua quan form
             this.table.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //Chon ca dong
-            this.table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //this.table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //this.table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            
+            //Can giua cho du lieu trong data grid view
+            this.table.EnableHeadersVisualStyles = false;
+            this.table.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.table.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            this.table.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.table.RowHeadersVisible = false;
         }
+        //Ham sua cot gioi tinh va que quan
         public void themSinhVienVaoTable(BindingList<SinhVien> ds)
         {
             this.table.DataSource = ds;
+        }
+
+        private void table_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.Value != null)
+            {
+                string valStr = e.Value.ToString().Trim().ToLower();
+
+                if (valStr == "true" || valStr == "nam")
+                {
+                    e.Value = "Nam";
+                }
+                else
+                {
+                    e.Value = "Nữ";
+                }
+                e.FormattingApplied = true;
+            }
+            if (e.ColumnIndex == 3 && e.Value != null)
+            {
+                string fullString = e.Value.ToString();
+                e.Value = fullString;
+                e.FormattingApplied = true;
+            }
         }
     }
 }
