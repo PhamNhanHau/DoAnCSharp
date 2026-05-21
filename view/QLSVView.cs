@@ -9,14 +9,23 @@ namespace DoAnCSharp
         public QLSVView() { InitializeComponent(); }
         public void capNhatDuLieuTinhVaoCBBQueQuan(List<Tinh> dsTinh)
         {
-            this.comboBoxQueQuan.DataSource = null;
-            this.comboBoxQueQuan.DataSource = dsTinh;
-            this.comboBoxQueQuan.DisplayMember = "TenTinh";
-            this.comboBoxQueQuan.ValueMember = "MaTinh";
-            this.comboBoxQueQuanThem.DataSource = null;
-            this.comboBoxQueQuanThem.DataSource = dsTinh;
+
+            dsTinh = Tinh.getDSTinh();
+
+            //Gan qua bindingSource rieng tranh cung du lieu
+            this.comboBoxQueQuan.DataSource = new BindingSource(dsTinh, null);
+            this.comboBoxQueQuan.DisplayMember = "TenTinh"; //Thuoc tinh hien thi
+            this.comboBoxQueQuan.ValueMember = "MaTinh";    //Thuoc tinh gia tri
+
+            
+            this.comboBoxQueQuanThem.DataSource = new BindingSource(dsTinh, null);
             this.comboBoxQueQuanThem.DisplayMember = "TenTinh";
             this.comboBoxQueQuanThem.ValueMember = "MaTinh";
+
+
+
+
+
 
         }
         public void xoaFormThongTin()

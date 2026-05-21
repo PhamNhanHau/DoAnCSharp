@@ -553,7 +553,9 @@ namespace DoAnCSharp
             Controls.Add(labelTimKiemSinhVien);
             Controls.Add(labelQueQuan);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "QLSVView";
             Text = "Quản lý sinh viên";
             menuStrip1.ResumeLayout(false);
