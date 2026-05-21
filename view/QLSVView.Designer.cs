@@ -192,6 +192,7 @@ namespace DoAnCSharp
             table.RowHeadersWidth = 51;
             table.Size = new Size(991, 349);
             table.TabIndex = 8;
+            table.CellClick += table_CellClick;
             table.CellFormatting += table_CellFormatting;
             // 
             // labelDanhSachSinhVien

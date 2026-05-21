@@ -201,5 +201,6 @@ namespace DoAnCSharp.Models
         {
             get { return gioiTinh ? "Nam" : "Nữ"; }
         }
+       
     }
 }

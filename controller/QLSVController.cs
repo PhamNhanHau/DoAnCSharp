@@ -20,6 +20,9 @@ namespace DoAnCSharp
             LoadInitialData();
             this.viewQLSV.buttonThem.Click += nhanNutThem;
             this.viewQLSV.buttonLuu.Click += nhanNutLuu;
+            this.viewQLSV.buttonChinhSua.Click += nhanNutChinhSua;
+            this.viewQLSV.buttonXoa.Click += nhanNutXoa;
+            this.viewQLSV.buttonHuyBo.Click += nhanNutHuyBo;
         }
         private void LoadInitialData()
         {
@@ -28,16 +31,58 @@ namespace DoAnCSharp
             viewQLSV.capNhatDuLieuTinhVaoCBBQueQuan(dsTinh);
             viewQLSV.capNhatDulieuVaoDataGridView();
             bindingListSV = new BindingList<SinhVien>(this.modelQLSV.DsSinhVien);
-            this.viewQLSV.themSinhVienVaoTable(bindingListSV);
-
+            this.viewQLSV.table.DataSource = bindingListSV;
         }   
         //Chuc nang them
         private void nhanNutThem(object sender, EventArgs e)
         {
             this.viewQLSV.xoaFormThongTin();
             this.viewQLSV.batButtonThem();
+            this.modelQLSV.ChucNang = "Them";
+        }
+        //Chuc nang chinh sua
+        private void nhanNutChinhSua(object sender, EventArgs e)
+        { 
+            this.viewQLSV.batButtonChinhSua();
+            this.modelQLSV.ChucNang = "ChinhSua";
+        }
+        //Chuc nang xoa
+        private void nhanNutXoa(object sender, EventArgs e)
+        {
+            this.viewQLSV.batButtonXoa();
+            this.modelQLSV.ChucNang = "Xoa";
+        }
+        private void nhanNutHuyBo(object sender, EventArgs e)
+        {
+            this.viewQLSV.batButtonHuyBo();
+            this.modelQLSV.ChucNang = "";
         }
         //Chuc nang luu
+        private void nhanNutLuu(object sender, EventArgs e)
+        {
+            if (this.modelQLSV.ChucNang == "Them")
+            {
+                this.ThucHienThemSinhVien();
+            }
+            else if (this.modelQLSV.ChucNang == "ChinhSua")
+            {
+                if (this.viewQLSV.table.CurrentRow != null)
+                {
+                    int indexCanXoa = this.viewQLSV.table.CurrentRow.Index;
+                    this.bindingListSV.RemoveAt(indexCanXoa);
+                    this.ThucHienThemSinhVien();
+                }
+            }
+            else if (this.modelQLSV.ChucNang == "Xoa")
+            {
+                if (this.viewQLSV.table.CurrentRow != null)
+                {
+                    int indexCanXoa = this.viewQLSV.table.CurrentRow.Index;
+                    this.bindingListSV.RemoveAt(indexCanXoa);
+                }
+            }
+            this.viewQLSV.batButtonLuu();
+        }
         private void ThucHienThemSinhVien()
         { 
             int maSinhVien = int.Parse(viewQLSV.textBoxMaSinhVienThem.Text.Trim());
@@ -74,16 +119,8 @@ namespace DoAnCSharp
             {
                 this.bindingListSV.Add(sv);
             }
-            else
-            {
-                this.modelQLSV.themSinhVien(sv);
-            }
+            
         }
-        private void nhanNutLuu(object sender, EventArgs e)
-        {
-            this.ThucHienThemSinhVien();
-            this.viewQLSV.batButtonLuu();
-            Console.WriteLine(this.modelQLSV.ToString);
-        }
+        
     }
 }

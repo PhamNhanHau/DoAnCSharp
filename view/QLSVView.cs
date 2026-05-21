@@ -59,9 +59,11 @@ namespace DoAnCSharp
             buttonThem.BackColor = SystemColors.Control;
             buttonXoa.BackColor = SystemColors.Control;
         }
-        public void themDuLieuVaoTable()
+        public void batButtonHuyBo()
         {
-
+            buttonChinhSua.BackColor = SystemColors.Control;
+            buttonThem.BackColor = SystemColors.Control;
+            buttonXoa.BackColor = SystemColors.Control;
         }
         public void capNhatDulieuVaoDataGridView()
         {
@@ -71,19 +73,19 @@ namespace DoAnCSharp
             DataGridViewTextBoxColumn colMaSV = new DataGridViewTextBoxColumn();
             colMaSV.DataPropertyName = "MaSinhVien"; //ten bien tren class model
             colMaSV.HeaderText = "Mã Sinh Viên";     //ten tieu de hien thi tren luoi
-            colMaSV.Width = 110;                     //kich thuoc
+            colMaSV.Width = 120;                     //kich thuoc
             this.table.Columns.Add(colMaSV);
 
             DataGridViewTextBoxColumn colHoTen = new DataGridViewTextBoxColumn();
             colHoTen.DataPropertyName = "TenSinhVien";
             colHoTen.HeaderText = "Họ và Tên";
-            colHoTen.Width = 200;
+            colHoTen.Width = 218;
             this.table.Columns.Add(colHoTen);
 
             DataGridViewTextBoxColumn colGioiTinh = new DataGridViewTextBoxColumn();
             colGioiTinh.DataPropertyName = "GioiTinh";
             colGioiTinh.HeaderText = "Giới Tính";
-            colGioiTinh.Width = 70;
+            colGioiTinh.Width = 80;
             this.table.Columns.Add(colGioiTinh);
 
             DataGridViewTextBoxColumn colQueQuan = new DataGridViewTextBoxColumn();
@@ -102,31 +104,31 @@ namespace DoAnCSharp
             DataGridViewTextBoxColumn colTX1 = new DataGridViewTextBoxColumn();
             colTX1.DataPropertyName = "DiemThuongXuyen1";
             colTX1.HeaderText = "Điểm TX1";
-            colTX1.Width = 60;
+            colTX1.Width = 70;
             this.table.Columns.Add(colTX1);
 
             DataGridViewTextBoxColumn colTX2 = new DataGridViewTextBoxColumn();
             colTX2.DataPropertyName = "DiemThuongXuyen2";
             colTX2.HeaderText = "Điểm TX2";
-            colTX2.Width = 60;
+            colTX2.Width = 70;
             this.table.Columns.Add(colTX2);
 
             DataGridViewTextBoxColumn colTX3 = new DataGridViewTextBoxColumn();
             colTX3.DataPropertyName = "DiemThuongXuyen3";
             colTX3.HeaderText = "Điểm TX3";
-            colTX3.Width = 60;
+            colTX3.Width = 70;
             this.table.Columns.Add(colTX3);
 
             DataGridViewTextBoxColumn colGK = new DataGridViewTextBoxColumn();
             colGK.DataPropertyName = "DiemGiuaKi";
             colGK.HeaderText = "Điểm GK";
-            colGK.Width = 60;
+            colGK.Width = 70;
             this.table.Columns.Add(colGK);
 
             DataGridViewTextBoxColumn colCK = new DataGridViewTextBoxColumn();
             colCK.DataPropertyName = "DiemCuoiKi";
             colCK.HeaderText = "Điểm CK";
-            colCK.Width = 60;
+            colCK.Width = 70;
             this.table.Columns.Add(colCK);
 
             this.table.AutoGenerateColumns = false; //Ngan khong tao them dong moi
@@ -135,7 +137,7 @@ namespace DoAnCSharp
             this.table.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //Chon ca dong
             //this.table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //this.table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            
+
             //Can giua cho du lieu trong data grid view
             this.table.EnableHeadersVisualStyles = false;
             this.table.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -144,11 +146,6 @@ namespace DoAnCSharp
             this.table.RowHeadersVisible = false;
         }
         //Ham sua cot gioi tinh va que quan
-        public void themSinhVienVaoTable(BindingList<SinhVien> ds)
-        {
-            this.table.DataSource = ds;
-        }
-
         private void table_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2 && e.Value != null)
@@ -172,5 +169,55 @@ namespace DoAnCSharp
                 e.FormattingApplied = true;
             }
         }
+
+        private void table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            this.xoaFormThongTin();
+            //lay dong dang chon
+            DataGridViewRow row = this.table.Rows[e.RowIndex];
+            //ma sinh vien ho ten
+            this.textBoxMaSinhVienThem.Text = row.Cells[0].Value?.ToString();
+            this.textBoxHoVaTen.Text = row.Cells[1].Value?.ToString();
+            //Gioi tinh
+            string gioiTinh = row.Cells[2].Value?.ToString();
+            if (gioiTinh == "True")
+            {
+                this.radioButtonNam.Checked = true;
+            }
+            else
+            {
+                this.radioButtonNu.Checked = true;
+            }
+            //Que quan
+            if (row.Cells[3].Value != null)
+            {
+                this.comboBoxQueQuanThem.Text = row.Cells[3].Value.ToString();
+            }
+
+            //Ngay sinh
+            string ngaySinhFull = row.Cells[4].Value?.ToString();
+
+            if (!string.IsNullOrEmpty(ngaySinhFull))
+            {
+                string ngaySinhStr = ngaySinhFull.Split(' ')[0].Trim();
+                string[] mangNgaySinh = ngaySinhStr.Split('/');
+                if (mangNgaySinh.Length == 3)
+                {
+                    this.textBoxNgay.Text = mangNgaySinh[0];
+                    this.textBoxThang.Text = mangNgaySinh[1];
+                    this.textBoxNam.Text = mangNgaySinh[2];
+                }
+            }
+
+            //Diem so
+            this.textBoxDiemThuongXuyen1.Text = row.Cells[5].Value?.ToString();
+            this.textBoxDiemThuongXuyen2.Text = row.Cells[6].Value?.ToString();
+            this.textBoxDiemThuongXuyen3.Text = row.Cells[7].Value?.ToString();
+            this.textBoxDiemGiuaKi.Text = row.Cells[8].Value?.ToString();
+            this.textBoxDiemCuoiKi.Text = row.Cells[9].Value?.ToString();
+        }
+        //Ham xoa sinh vien trong datagrid
+
     }
 }
