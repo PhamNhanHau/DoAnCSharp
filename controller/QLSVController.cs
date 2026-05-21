@@ -93,6 +93,8 @@ namespace DoAnCSharp
             try
             {
                 int maSinhVien = int.Parse(viewQLSV.textBoxMaSinhVienThem.Text.Trim());
+                this.modelQLSV.kiemTraTrungMaSinhVien(maSinhVien);
+
                 string hoVaTen = viewQLSV.textBoxHoVaTen.Text.Trim();
 
                 string tinh = viewQLSV.comboBoxQueQuanThem.Text.Trim();
@@ -100,6 +102,7 @@ namespace DoAnCSharp
 
                 string chuoiGioiTinh = viewQLSV.radioButtonNam.Checked ? "Nam" : "Nữ";
                 bool gioiTinh = chuoiGioiTinh.Equals("Nam");
+                this.viewQLSV.kiemTraCheckedGioiTinh();
 
                 string chuoiNgaySinh = $"{viewQLSV.textBoxNgay.Text.Trim()}/{viewQLSV.textBoxThang.Text.Trim()}/{viewQLSV.textBoxNam.Text.Trim()}";
                 DateTime ngaySinh = new DateTime(2000, 1, 1);

@@ -246,7 +246,14 @@ namespace DoAnCSharp
             this.textBoxDiemGiuaKi.Text = row.Cells[8].Value?.ToString();
             this.textBoxDiemCuoiKi.Text = row.Cells[9].Value?.ToString();
         }
-        //Ham xoa sinh vien trong datagrid
+        // Kiem tra groupbox
+        public void kiemTraCheckedGioiTinh()
+        {
+            if (this.radioButtonNam.Checked == false && this.radioButtonNu.Checked == false)
+            {
+                throw new Exception("Chưa chọn giới tính");
+            }
+        }
 
     }
 }

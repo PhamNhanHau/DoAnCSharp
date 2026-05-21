@@ -42,6 +42,16 @@ namespace DoAnCSharp.Models
             }
             return null;
         }
+        public void kiemTraTrungMaSinhVien(int maSinhVien)
+        {
+            foreach (SinhVien sv in this.dsSinhVien)
+            {
+                if(maSinhVien == sv.MaSinhVien)
+                {
+                    throw new Exception("Mã sinh viên đã tồn tại");
+                    break;
+                }
+            }
+        }
     }
-    
 }

@@ -17,6 +17,10 @@ namespace DoAnCSharp.Models
                 {
                     maSinhVien = value;
                 }
+                else
+                {
+                    throw new ArgumentException("Mã sinh viên phải là số nguyên dương");
+                }
             }
         }
 
@@ -32,6 +36,10 @@ namespace DoAnCSharp.Models
                 if (!string.IsNullOrEmpty(value))
                 {
                     tenSinhVien = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Tên sinh viên không hợp lệ");
                 }
             }
         }
@@ -75,11 +83,16 @@ namespace DoAnCSharp.Models
             }
             set
             {
-                if (value >= DateTime.MinValue)
+                if (value < DateTime.Now)
                 {
                     this.ngaySinh = value;
                 }
+                else
+                {
+                    throw new ArgumentException("Ngày sinh không hợp lệ");
+                }
             }
+
         }
         private float diemThuongXuyen1;
         public float DiemThuongXuyen1
