@@ -365,7 +365,7 @@
 											"top": 238,
 											"width": 149.87158203125,
 											"height": 13,
-											"text": "-maSinhVien",
+											"text": "-int maSinhVien",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1507,9 +1507,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
-							"name": "maSinhVien",
-							"visibility": "private",
-							"type": ""
+							"name": "int maSinhVien",
+							"visibility": "private"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1558,7 +1557,8 @@
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
 							"name": "float diemThuongXuyen1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1567,7 +1567,8 @@
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
 							"name": "float diemThuongXuyen2",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1576,7 +1577,8 @@
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
 							"name": "float diemThuongXuyen3",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1585,7 +1587,8 @@
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
 							"name": "float diemGiuaKi",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1594,7 +1597,8 @@
 								"$ref": "AAAAAAGd8U9cfkRKTas="
 							},
 							"name": "float diemCuoiKi",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					]
 				},
