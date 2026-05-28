@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DoAnCSharp.model
+namespace DoAnCSharp.Models
 {
     public interface DAOInterface<T>
     {

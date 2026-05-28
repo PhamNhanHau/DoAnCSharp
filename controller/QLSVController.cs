@@ -2,9 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Linq;
 
 namespace DoAnCSharp
 {
@@ -27,7 +28,8 @@ namespace DoAnCSharp
             this.viewQLSV.buttonHuyBo.Click += nhanNutHuyBo;
             this.viewQLSV.buttonHuyTim.Click += nhanNutHuyTim;
             this.viewQLSV.buttonTim.Click += nhanNutTimKiem;
-            this.viewQLSV.fileToolStripMenuItem.Click += nhanNutSaveFile;
+            this.viewQLSV.fileMenu.Click += nhanNutSaveFile;
+            this.viewQLSV.openSQLMenu.Click += nhanNutOpenSQLMenu;
         }
         private void LoadInitialData()
         {
@@ -124,10 +126,31 @@ namespace DoAnCSharp
                 {
                     this.bindingListSV.Add(sv);
                 }
+                if(this.modelQLSV.ChucNang == "Them")
+                {
+                    sinhVienDao.getInstance().insert(sv);
+                }
+                this.tuongTacSQL(sv);
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+            }
+        }
+        private void tuongTacSQL(SinhVien sv)
+        {
+            if (this.modelQLSV.ChucNang == "Them")
+            {
+                sinhVienDao.getInstance().insert(sv);
+            }
+            else if (this.modelQLSV.ChucNang == "ChinhSua")
+            {
+                sinhVienDao.getInstance().insert(sv);
+            }
+            else if (this.modelQLSV.ChucNang == "Xoa")
+            {
+                sinhVienDao.getInstance().delete(sv);
             }
         }
         //Chuc nang huy tim
@@ -178,10 +201,56 @@ namespace DoAnCSharp
             //khong co sinh vien nao dung ket qua
             this.viewQLSV.table.DataSource = bindingListTimKiem;
         }
+        //Cac chuc nang cua File
         private void nhanNutSaveFile(object sender, EventArgs e)
         {
-            this.modelQLSV.DsSinhVien
+            
         }
+        //Cac chuc nang cua SQL
+        private void nhanNutOpenSQLMenu(object sender, EventArgs e)
+        {
+            string xamppFolder = @"D:\Tool\Xampp\Source";
+
+            try
+            {
+                //Khoi chay apache
+                string apacheScript = Path.Combine(xamppFolder, "apache_start.bat");
+                if (File.Exists(apacheScript))
+                {
+                    ProcessStartInfo apacheInfo = new ProcessStartInfo(apacheScript)
+                    {
+                        WorkingDirectory = xamppFolder,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                    Process.Start(apacheInfo);
+                }
+
+                //khoiChay Mysql
+                string mysqlScript = Path.Combine(xamppFolder, "mysql_start.bat");
+                if (File.Exists(mysqlScript))
+                {
+                    ProcessStartInfo mysqlInfo = new ProcessStartInfo(mysqlScript)
+                    {
+                        WorkingDirectory = xamppFolder,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                    Process.Start(mysqlInfo);
+                }
+
+                //Doi apache va mysql bat len
+                System.Threading.Thread.Sleep(3000);
+
+               
+                MessageBox.Show("Đã kích hoạt tiến trình mở Apache và MySQL thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống khi mở XAMPP: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 
 }

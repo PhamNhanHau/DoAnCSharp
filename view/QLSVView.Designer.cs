@@ -30,11 +30,15 @@ namespace DoAnCSharp
             buttonTim = new Button();
             buttonHuyTim = new Button();
             menuStrip = new MenuStrip();
-            fileToolStripMenuItem = new ToolStripMenuItem();
-            openToolStripMenuItem = new ToolStripMenuItem();
-            saveToolStripMenuItem = new ToolStripMenuItem();
-            closeToolStripMenuItem = new ToolStripMenuItem();
-            aboutMeToolStripMenuItem = new ToolStripMenuItem();
+            fileMenu = new ToolStripMenuItem();
+            openFileMenu = new ToolStripMenuItem();
+            saveFileMenu = new ToolStripMenuItem();
+            closeFileMenu = new ToolStripMenuItem();
+            SQLMenu = new ToolStripMenuItem();
+            openSQLMenu = new ToolStripMenuItem();
+            loadSQLMenu = new ToolStripMenuItem();
+            closeSQLMenu = new ToolStripMenuItem();
+            aboutMeMenu = new ToolStripMenuItem();
             table = new DataGridView();
             labelDanhSachSinhVien = new Label();
             labelThemHoacChinhSua = new Label();
@@ -78,9 +82,9 @@ namespace DoAnCSharp
             // 
             labelQueQuan.AutoSize = true;
             labelQueQuan.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelQueQuan.Location = new Point(10, 70);
+            labelQueQuan.Location = new Point(11, 93);
             labelQueQuan.Name = "labelQueQuan";
-            labelQueQuan.Size = new Size(108, 30);
+            labelQueQuan.Size = new Size(139, 38);
             labelQueQuan.TabIndex = 0;
             labelQueQuan.Text = "Quê quán";
             // 
@@ -88,9 +92,9 @@ namespace DoAnCSharp
             // 
             labelTimKiemSinhVien.AutoSize = true;
             labelTimKiemSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelTimKiemSinhVien.Location = new Point(10, 34);
+            labelTimKiemSinhVien.Location = new Point(11, 45);
             labelTimKiemSinhVien.Name = "labelTimKiemSinhVien";
-            labelTimKiemSinhVien.Size = new Size(192, 30);
+            labelTimKiemSinhVien.Size = new Size(249, 38);
             labelTimKiemSinhVien.TabIndex = 1;
             labelTimKiemSinhVien.Text = "Tìm kiếm sinh viên";
             // 
@@ -98,38 +102,35 @@ namespace DoAnCSharp
             // 
             comboBoxQueQuan.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
             comboBoxQueQuan.FormattingEnabled = true;
-            comboBoxQueQuan.Location = new Point(142, 68);
-            comboBoxQueQuan.Margin = new Padding(3, 2, 3, 2);
+            comboBoxQueQuan.Location = new Point(162, 91);
             comboBoxQueQuan.Name = "comboBoxQueQuan";
-            comboBoxQueQuan.Size = new Size(195, 38);
+            comboBoxQueQuan.Size = new Size(222, 45);
             comboBoxQueQuan.TabIndex = 2;
             // 
             // labelMaSinhVien
             // 
             labelMaSinhVien.AutoSize = true;
             labelMaSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelMaSinhVien.Location = new Point(344, 70);
+            labelMaSinhVien.Location = new Point(393, 93);
             labelMaSinhVien.Name = "labelMaSinhVien";
-            labelMaSinhVien.Size = new Size(134, 30);
+            labelMaSinhVien.Size = new Size(174, 38);
             labelMaSinhVien.TabIndex = 3;
             labelMaSinhVien.Text = "Mã sinh viên";
             // 
             // textBoxMaSinhVien
             // 
             textBoxMaSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxMaSinhVien.Location = new Point(501, 68);
-            textBoxMaSinhVien.Margin = new Padding(3, 2, 3, 2);
+            textBoxMaSinhVien.Location = new Point(573, 91);
             textBoxMaSinhVien.Name = "textBoxMaSinhVien";
-            textBoxMaSinhVien.Size = new Size(148, 36);
+            textBoxMaSinhVien.Size = new Size(169, 43);
             textBoxMaSinhVien.TabIndex = 4;
             // 
             // buttonTim
             // 
             buttonTim.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonTim.Location = new Point(654, 65);
-            buttonTim.Margin = new Padding(3, 2, 3, 2);
+            buttonTim.Location = new Point(747, 87);
             buttonTim.Name = "buttonTim";
-            buttonTim.Size = new Size(96, 34);
+            buttonTim.Size = new Size(110, 45);
             buttonTim.TabIndex = 5;
             buttonTim.Text = "Tìm ";
             buttonTim.UseVisualStyleBackColor = true;
@@ -137,10 +138,9 @@ namespace DoAnCSharp
             // buttonHuyTim
             // 
             buttonHuyTim.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonHuyTim.Location = new Point(756, 65);
-            buttonHuyTim.Margin = new Padding(3, 2, 3, 2);
+            buttonHuyTim.Location = new Point(864, 87);
             buttonHuyTim.Name = "buttonHuyTim";
-            buttonHuyTim.Size = new Size(122, 34);
+            buttonHuyTim.Size = new Size(139, 45);
             buttonHuyTim.TabIndex = 6;
             buttonHuyTim.Text = "Hủy Tìm";
             buttonHuyTim.UseVisualStyleBackColor = true;
@@ -148,54 +148,79 @@ namespace DoAnCSharp
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, aboutMeToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, SQLMenu, aboutMeMenu });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Padding = new Padding(5, 2, 0, 2);
-            menuStrip.Size = new Size(888, 38);
+            menuStrip.Padding = new Padding(6, 3, 0, 3);
+            menuStrip.Size = new Size(1015, 48);
             menuStrip.TabIndex = 7;
             // 
-            // fileToolStripMenuItem
+            // fileMenu
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, saveToolStripMenuItem, closeToolStripMenuItem });
-            fileToolStripMenuItem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(58, 34);
-            fileToolStripMenuItem.Text = "File";
+            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { openFileMenu, saveFileMenu, closeFileMenu });
+            fileMenu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            fileMenu.Name = "fileMenu";
+            fileMenu.Size = new Size(74, 42);
+            fileMenu.Text = "File";
             // 
-            // openToolStripMenuItem
+            // openFileMenu
             // 
-            openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(180, 34);
-            openToolStripMenuItem.Text = "Open";
+            openFileMenu.Name = "openFileMenu";
+            openFileMenu.Size = new Size(224, 42);
+            openFileMenu.Text = "Open";
             // 
-            // saveToolStripMenuItem
+            // saveFileMenu
             // 
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(180, 34);
-            saveToolStripMenuItem.Text = "Save";
+            saveFileMenu.Name = "saveFileMenu";
+            saveFileMenu.Size = new Size(224, 42);
+            saveFileMenu.Text = "Save";
             // 
-            // closeToolStripMenuItem
+            // closeFileMenu
             // 
-            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(180, 34);
-            closeToolStripMenuItem.Text = "Close";
+            closeFileMenu.Name = "closeFileMenu";
+            closeFileMenu.Size = new Size(224, 42);
+            closeFileMenu.Text = "Close";
             // 
-            // aboutMeToolStripMenuItem
+            // SQLMenu
             // 
-            aboutMeToolStripMenuItem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            aboutMeToolStripMenuItem.Name = "aboutMeToolStripMenuItem";
-            aboutMeToolStripMenuItem.Size = new Size(122, 34);
-            aboutMeToolStripMenuItem.Text = "About Me";
+            SQLMenu.DropDownItems.AddRange(new ToolStripItem[] { openSQLMenu, loadSQLMenu, closeSQLMenu });
+            SQLMenu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            SQLMenu.Name = "SQLMenu";
+            SQLMenu.Size = new Size(80, 42);
+            SQLMenu.Text = "SQL";
+            // 
+            // openSQLMenu
+            // 
+            openSQLMenu.Name = "openSQLMenu";
+            openSQLMenu.Size = new Size(233, 42);
+            openSQLMenu.Text = "Open SQL";
+            // 
+            // loadSQLMenu
+            // 
+            loadSQLMenu.Name = "loadSQLMenu";
+            loadSQLMenu.Size = new Size(233, 42);
+            loadSQLMenu.Text = "Load Data";
+            // 
+            // closeSQLMenu
+            // 
+            closeSQLMenu.Name = "closeSQLMenu";
+            closeSQLMenu.Size = new Size(233, 42);
+            closeSQLMenu.Text = "Close SQL";
+            // 
+            // aboutMeMenu
+            // 
+            aboutMeMenu.Font = new Font("Segoe UI", 16.2F);
+            aboutMeMenu.Name = "aboutMeMenu";
+            aboutMeMenu.Size = new Size(154, 42);
+            aboutMeMenu.Text = "About Me";
             // 
             // table
             // 
             table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table.Location = new Point(10, 134);
-            table.Margin = new Padding(3, 2, 3, 2);
+            table.Location = new Point(11, 179);
             table.Name = "table";
             table.RowHeadersWidth = 51;
-            table.Size = new Size(867, 262);
+            table.Size = new Size(991, 349);
             table.TabIndex = 8;
             table.CellClick += table_CellClick;
             table.CellFormatting += table_CellFormatting;
@@ -204,9 +229,9 @@ namespace DoAnCSharp
             // 
             labelDanhSachSinhVien.AutoSize = true;
             labelDanhSachSinhVien.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDanhSachSinhVien.Location = new Point(10, 104);
+            labelDanhSachSinhVien.Location = new Point(11, 139);
             labelDanhSachSinhVien.Name = "labelDanhSachSinhVien";
-            labelDanhSachSinhVien.Size = new Size(201, 30);
+            labelDanhSachSinhVien.Size = new Size(264, 38);
             labelDanhSachSinhVien.TabIndex = 9;
             labelDanhSachSinhVien.Text = "Danh sách sinh viên";
             // 
@@ -214,9 +239,9 @@ namespace DoAnCSharp
             // 
             labelThemHoacChinhSua.AutoSize = true;
             labelThemHoacChinhSua.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelThemHoacChinhSua.Location = new Point(10, 398);
+            labelThemHoacChinhSua.Location = new Point(11, 531);
             labelThemHoacChinhSua.Name = "labelThemHoacChinhSua";
-            labelThemHoacChinhSua.Size = new Size(306, 30);
+            labelThemHoacChinhSua.Size = new Size(398, 38);
             labelThemHoacChinhSua.TabIndex = 11;
             labelThemHoacChinhSua.Text = "Thêm hoặc chỉnh sửa sinh viên";
             // 
@@ -224,37 +249,35 @@ namespace DoAnCSharp
             // 
             labelMaSinhVienThem.AutoSize = true;
             labelMaSinhVienThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelMaSinhVienThem.Location = new Point(10, 436);
+            labelMaSinhVienThem.Location = new Point(11, 581);
             labelMaSinhVienThem.Name = "labelMaSinhVienThem";
-            labelMaSinhVienThem.Size = new Size(134, 30);
+            labelMaSinhVienThem.Size = new Size(174, 38);
             labelMaSinhVienThem.TabIndex = 12;
             labelMaSinhVienThem.Text = "Mã sinh viên";
             // 
             // textBoxMaSinhVienThem
             // 
             textBoxMaSinhVienThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxMaSinhVienThem.Location = new Point(164, 434);
-            textBoxMaSinhVienThem.Margin = new Padding(3, 2, 3, 2);
+            textBoxMaSinhVienThem.Location = new Point(187, 579);
             textBoxMaSinhVienThem.Name = "textBoxMaSinhVienThem";
-            textBoxMaSinhVienThem.Size = new Size(196, 36);
+            textBoxMaSinhVienThem.Size = new Size(223, 43);
             textBoxMaSinhVienThem.TabIndex = 13;
             // 
             // textBoxHoVaTen
             // 
             textBoxHoVaTen.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxHoVaTen.Location = new Point(164, 475);
-            textBoxHoVaTen.Margin = new Padding(3, 2, 3, 2);
+            textBoxHoVaTen.Location = new Point(187, 633);
             textBoxHoVaTen.Name = "textBoxHoVaTen";
-            textBoxHoVaTen.Size = new Size(196, 36);
+            textBoxHoVaTen.Size = new Size(223, 43);
             textBoxHoVaTen.TabIndex = 14;
             // 
             // labelQueQuanThem
             // 
             labelQueQuanThem.AutoSize = true;
             labelQueQuanThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelQueQuanThem.Location = new Point(10, 518);
+            labelQueQuanThem.Location = new Point(11, 691);
             labelQueQuanThem.Name = "labelQueQuanThem";
-            labelQueQuanThem.Size = new Size(108, 30);
+            labelQueQuanThem.Size = new Size(139, 38);
             labelQueQuanThem.TabIndex = 15;
             labelQueQuanThem.Text = "Quê quán";
             // 
@@ -262,76 +285,71 @@ namespace DoAnCSharp
             // 
             comboBoxQueQuanThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
             comboBoxQueQuanThem.FormattingEnabled = true;
-            comboBoxQueQuanThem.Location = new Point(164, 516);
-            comboBoxQueQuanThem.Margin = new Padding(3, 2, 3, 2);
+            comboBoxQueQuanThem.Location = new Point(187, 688);
             comboBoxQueQuanThem.Name = "comboBoxQueQuanThem";
-            comboBoxQueQuanThem.Size = new Size(196, 38);
+            comboBoxQueQuanThem.Size = new Size(223, 45);
             comboBoxQueQuanThem.TabIndex = 16;
             // 
             // labelNgaySinh
             // 
             labelNgaySinh.AutoSize = true;
             labelNgaySinh.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelNgaySinh.Location = new Point(10, 556);
+            labelNgaySinh.Location = new Point(11, 741);
             labelNgaySinh.Name = "labelNgaySinh";
-            labelNgaySinh.Size = new Size(108, 30);
+            labelNgaySinh.Size = new Size(141, 38);
             labelNgaySinh.TabIndex = 17;
             labelNgaySinh.Text = "Ngày sinh";
             // 
             // textBoxNgay
             // 
             textBoxNgay.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxNgay.Location = new Point(164, 556);
-            textBoxNgay.Margin = new Padding(3, 2, 3, 2);
+            textBoxNgay.Location = new Point(187, 741);
             textBoxNgay.Name = "textBoxNgay";
-            textBoxNgay.Size = new Size(43, 36);
+            textBoxNgay.Size = new Size(49, 43);
             textBoxNgay.TabIndex = 18;
             // 
             // labelSetThang
             // 
             labelSetThang.AutoSize = true;
             labelSetThang.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelSetThang.Location = new Point(267, 559);
+            labelSetThang.Location = new Point(305, 745);
             labelSetThang.Name = "labelSetThang";
-            labelSetThang.Size = new Size(22, 30);
+            labelSetThang.Size = new Size(28, 38);
             labelSetThang.TabIndex = 19;
             labelSetThang.Text = "/";
             // 
             // textBoxThang
             // 
             textBoxThang.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxThang.Location = new Point(228, 556);
-            textBoxThang.Margin = new Padding(3, 2, 3, 2);
+            textBoxThang.Location = new Point(261, 741);
             textBoxThang.Name = "textBoxThang";
-            textBoxThang.Size = new Size(40, 36);
+            textBoxThang.Size = new Size(45, 43);
             textBoxThang.TabIndex = 20;
             // 
             // labelSetNgay
             // 
             labelSetNgay.AutoSize = true;
             labelSetNgay.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelSetNgay.Location = new Point(205, 559);
+            labelSetNgay.Location = new Point(234, 745);
             labelSetNgay.Name = "labelSetNgay";
-            labelSetNgay.Size = new Size(22, 30);
+            labelSetNgay.Size = new Size(28, 38);
             labelSetNgay.TabIndex = 21;
             labelSetNgay.Text = "/";
             // 
             // textBoxNam
             // 
             textBoxNam.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxNam.Location = new Point(284, 556);
-            textBoxNam.Margin = new Padding(3, 2, 3, 2);
+            textBoxNam.Location = new Point(325, 741);
             textBoxNam.Name = "textBoxNam";
-            textBoxNam.Size = new Size(75, 36);
+            textBoxNam.Size = new Size(85, 43);
             textBoxNam.TabIndex = 22;
             // 
             // buttonThem
             // 
             buttonThem.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonThem.Location = new Point(8, 602);
-            buttonThem.Margin = new Padding(3, 2, 3, 2);
+            buttonThem.Location = new Point(9, 803);
             buttonThem.Name = "buttonThem";
-            buttonThem.Size = new Size(150, 40);
+            buttonThem.Size = new Size(171, 53);
             buttonThem.TabIndex = 23;
             buttonThem.Text = "Thêm";
             buttonThem.UseVisualStyleBackColor = true;
@@ -339,10 +357,9 @@ namespace DoAnCSharp
             // buttonChinhSua
             // 
             buttonChinhSua.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonChinhSua.Location = new Point(179, 602);
-            buttonChinhSua.Margin = new Padding(3, 2, 3, 2);
+            buttonChinhSua.Location = new Point(205, 803);
             buttonChinhSua.Name = "buttonChinhSua";
-            buttonChinhSua.Size = new Size(157, 40);
+            buttonChinhSua.Size = new Size(179, 53);
             buttonChinhSua.TabIndex = 24;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = true;
@@ -350,10 +367,9 @@ namespace DoAnCSharp
             // buttonXoa
             // 
             buttonXoa.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonXoa.Location = new Point(361, 602);
-            buttonXoa.Margin = new Padding(3, 2, 3, 2);
+            buttonXoa.Location = new Point(413, 803);
             buttonXoa.Name = "buttonXoa";
-            buttonXoa.Size = new Size(157, 40);
+            buttonXoa.Size = new Size(179, 53);
             buttonXoa.TabIndex = 25;
             buttonXoa.Text = "Xóa";
             buttonXoa.UseVisualStyleBackColor = true;
@@ -361,10 +377,9 @@ namespace DoAnCSharp
             // buttonLuu
             // 
             buttonLuu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonLuu.Location = new Point(540, 602);
-            buttonLuu.Margin = new Padding(3, 2, 3, 2);
+            buttonLuu.Location = new Point(617, 803);
             buttonLuu.Name = "buttonLuu";
-            buttonLuu.Size = new Size(157, 40);
+            buttonLuu.Size = new Size(179, 53);
             buttonLuu.TabIndex = 26;
             buttonLuu.Text = "Lưu";
             buttonLuu.UseVisualStyleBackColor = true;
@@ -372,10 +387,9 @@ namespace DoAnCSharp
             // buttonHuyBo
             // 
             buttonHuyBo.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            buttonHuyBo.Location = new Point(721, 602);
-            buttonHuyBo.Margin = new Padding(3, 2, 3, 2);
+            buttonHuyBo.Location = new Point(824, 803);
             buttonHuyBo.Name = "buttonHuyBo";
-            buttonHuyBo.Size = new Size(157, 40);
+            buttonHuyBo.Size = new Size(179, 53);
             buttonHuyBo.TabIndex = 27;
             buttonHuyBo.Text = "Hủy bỏ";
             buttonHuyBo.UseVisualStyleBackColor = true;
@@ -384,9 +398,9 @@ namespace DoAnCSharp
             // 
             labelHoVaTen.AutoSize = true;
             labelHoVaTen.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelHoVaTen.Location = new Point(10, 477);
+            labelHoVaTen.Location = new Point(11, 636);
             labelHoVaTen.Name = "labelHoVaTen";
-            labelHoVaTen.Size = new Size(107, 30);
+            labelHoVaTen.Size = new Size(136, 38);
             labelHoVaTen.TabIndex = 10;
             labelHoVaTen.Text = "Họ và tên";
             // 
@@ -394,9 +408,9 @@ namespace DoAnCSharp
             // 
             labelGioiTinh.AutoSize = true;
             labelGioiTinh.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelGioiTinh.Location = new Point(405, 436);
+            labelGioiTinh.Location = new Point(463, 581);
             labelGioiTinh.Name = "labelGioiTinh";
-            labelGioiTinh.Size = new Size(98, 30);
+            labelGioiTinh.Size = new Size(129, 38);
             labelGioiTinh.TabIndex = 28;
             labelGioiTinh.Text = "Giới Tính";
             // 
@@ -404,10 +418,9 @@ namespace DoAnCSharp
             // 
             radioButtonNam.AutoSize = true;
             radioButtonNam.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            radioButtonNam.Location = new Point(5, 14);
-            radioButtonNam.Margin = new Padding(3, 2, 3, 2);
+            radioButtonNam.Location = new Point(6, 19);
             radioButtonNam.Name = "radioButtonNam";
-            radioButtonNam.Size = new Size(77, 34);
+            radioButtonNam.Size = new Size(97, 42);
             radioButtonNam.TabIndex = 29;
             radioButtonNam.TabStop = true;
             radioButtonNam.Text = "Nam";
@@ -417,10 +430,9 @@ namespace DoAnCSharp
             // 
             radioButtonNu.AutoSize = true;
             radioButtonNu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            radioButtonNu.Location = new Point(131, 14);
-            radioButtonNu.Margin = new Padding(3, 2, 3, 2);
+            radioButtonNu.Location = new Point(150, 19);
             radioButtonNu.Name = "radioButtonNu";
-            radioButtonNu.Size = new Size(60, 34);
+            radioButtonNu.Size = new Size(75, 42);
             radioButtonNu.TabIndex = 30;
             radioButtonNu.TabStop = true;
             radioButtonNu.Text = "Nữ";
@@ -430,9 +442,9 @@ namespace DoAnCSharp
             // 
             labelDiemThuongXuyen1.AutoSize = true;
             labelDiemThuongXuyen1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemThuongXuyen1.Location = new Point(364, 478);
+            labelDiemThuongXuyen1.Location = new Point(416, 637);
             labelDiemThuongXuyen1.Name = "labelDiemThuongXuyen1";
-            labelDiemThuongXuyen1.Size = new Size(107, 30);
+            labelDiemThuongXuyen1.Size = new Size(138, 38);
             labelDiemThuongXuyen1.TabIndex = 31;
             labelDiemThuongXuyen1.Text = "Điểm TX1";
             // 
@@ -440,9 +452,9 @@ namespace DoAnCSharp
             // 
             labelDiemThuongXuyen2.AutoSize = true;
             labelDiemThuongXuyen2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemThuongXuyen2.Location = new Point(364, 518);
+            labelDiemThuongXuyen2.Location = new Point(416, 691);
             labelDiemThuongXuyen2.Name = "labelDiemThuongXuyen2";
-            labelDiemThuongXuyen2.Size = new Size(107, 30);
+            labelDiemThuongXuyen2.Size = new Size(138, 38);
             labelDiemThuongXuyen2.TabIndex = 32;
             labelDiemThuongXuyen2.Text = "Điểm TX2";
             // 
@@ -450,46 +462,43 @@ namespace DoAnCSharp
             // 
             labelDiemThuongXuyen3.AutoSize = true;
             labelDiemThuongXuyen3.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemThuongXuyen3.Location = new Point(364, 556);
+            labelDiemThuongXuyen3.Location = new Point(416, 741);
             labelDiemThuongXuyen3.Name = "labelDiemThuongXuyen3";
-            labelDiemThuongXuyen3.Size = new Size(107, 30);
+            labelDiemThuongXuyen3.Size = new Size(138, 38);
             labelDiemThuongXuyen3.TabIndex = 33;
             labelDiemThuongXuyen3.Text = "Điểm TX3";
             // 
             // textBoxDiemThuongXuyen1
             // 
             textBoxDiemThuongXuyen1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxDiemThuongXuyen1.Location = new Point(501, 478);
-            textBoxDiemThuongXuyen1.Margin = new Padding(3, 2, 3, 2);
+            textBoxDiemThuongXuyen1.Location = new Point(573, 637);
             textBoxDiemThuongXuyen1.Name = "textBoxDiemThuongXuyen1";
-            textBoxDiemThuongXuyen1.Size = new Size(64, 36);
+            textBoxDiemThuongXuyen1.Size = new Size(73, 43);
             textBoxDiemThuongXuyen1.TabIndex = 34;
             // 
             // textBoxDiemThuongXuyen2
             // 
             textBoxDiemThuongXuyen2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxDiemThuongXuyen2.Location = new Point(501, 518);
-            textBoxDiemThuongXuyen2.Margin = new Padding(3, 2, 3, 2);
+            textBoxDiemThuongXuyen2.Location = new Point(573, 691);
             textBoxDiemThuongXuyen2.Name = "textBoxDiemThuongXuyen2";
-            textBoxDiemThuongXuyen2.Size = new Size(64, 36);
+            textBoxDiemThuongXuyen2.Size = new Size(73, 43);
             textBoxDiemThuongXuyen2.TabIndex = 35;
             // 
             // textBoxDiemThuongXuyen3
             // 
             textBoxDiemThuongXuyen3.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxDiemThuongXuyen3.Location = new Point(501, 555);
-            textBoxDiemThuongXuyen3.Margin = new Padding(3, 2, 3, 2);
+            textBoxDiemThuongXuyen3.Location = new Point(573, 740);
             textBoxDiemThuongXuyen3.Name = "textBoxDiemThuongXuyen3";
-            textBoxDiemThuongXuyen3.Size = new Size(64, 36);
+            textBoxDiemThuongXuyen3.Size = new Size(73, 43);
             textBoxDiemThuongXuyen3.TabIndex = 36;
             // 
             // labelDiemGiuaKi
             // 
             labelDiemGiuaKi.AutoSize = true;
             labelDiemGiuaKi.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemGiuaKi.Location = new Point(576, 478);
+            labelDiemGiuaKi.Location = new Point(658, 637);
             labelDiemGiuaKi.Name = "labelDiemGiuaKi";
-            labelDiemGiuaKi.Size = new Size(98, 30);
+            labelDiemGiuaKi.Size = new Size(126, 38);
             labelDiemGiuaKi.TabIndex = 37;
             labelDiemGiuaKi.Text = "Điểm GK";
             // 
@@ -497,47 +506,43 @@ namespace DoAnCSharp
             // 
             labelDiemCuoiKi.AutoSize = true;
             labelDiemCuoiKi.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            labelDiemCuoiKi.Location = new Point(576, 518);
+            labelDiemCuoiKi.Location = new Point(658, 691);
             labelDiemCuoiKi.Name = "labelDiemCuoiKi";
-            labelDiemCuoiKi.Size = new Size(97, 30);
+            labelDiemCuoiKi.Size = new Size(124, 38);
             labelDiemCuoiKi.TabIndex = 38;
             labelDiemCuoiKi.Text = "Điểm CK";
             // 
             // textBoxDiemGiuaKi
             // 
             textBoxDiemGiuaKi.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxDiemGiuaKi.Location = new Point(690, 479);
-            textBoxDiemGiuaKi.Margin = new Padding(3, 2, 3, 2);
+            textBoxDiemGiuaKi.Location = new Point(789, 639);
             textBoxDiemGiuaKi.Name = "textBoxDiemGiuaKi";
-            textBoxDiemGiuaKi.Size = new Size(64, 36);
+            textBoxDiemGiuaKi.Size = new Size(73, 43);
             textBoxDiemGiuaKi.TabIndex = 39;
             // 
             // textBoxDiemCuoiKi
             // 
             textBoxDiemCuoiKi.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBoxDiemCuoiKi.Location = new Point(690, 516);
-            textBoxDiemCuoiKi.Margin = new Padding(3, 2, 3, 2);
+            textBoxDiemCuoiKi.Location = new Point(789, 688);
             textBoxDiemCuoiKi.Name = "textBoxDiemCuoiKi";
-            textBoxDiemCuoiKi.Size = new Size(64, 36);
+            textBoxDiemCuoiKi.Size = new Size(73, 43);
             textBoxDiemCuoiKi.TabIndex = 40;
             // 
             // groupBoxGioiTinh
             // 
             groupBoxGioiTinh.Controls.Add(radioButtonNam);
             groupBoxGioiTinh.Controls.Add(radioButtonNu);
-            groupBoxGioiTinh.Location = new Point(523, 423);
-            groupBoxGioiTinh.Margin = new Padding(3, 2, 3, 2);
+            groupBoxGioiTinh.Location = new Point(598, 564);
             groupBoxGioiTinh.Name = "groupBoxGioiTinh";
-            groupBoxGioiTinh.Padding = new Padding(3, 2, 3, 2);
-            groupBoxGioiTinh.Size = new Size(232, 51);
+            groupBoxGioiTinh.Size = new Size(265, 68);
             groupBoxGioiTinh.TabIndex = 41;
             groupBoxGioiTinh.TabStop = false;
             // 
             // QLSVView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 651);
+            ClientSize = new Size(1015, 868);
             Controls.Add(groupBoxGioiTinh);
             Controls.Add(textBoxDiemCuoiKi);
             Controls.Add(textBoxDiemGiuaKi);
@@ -580,7 +585,6 @@ namespace DoAnCSharp
             Controls.Add(menuStrip);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip;
-            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "QLSVView";
             Text = "Quản lý sinh viên";
@@ -601,11 +605,11 @@ namespace DoAnCSharp
         public Button buttonTim;
         public Button buttonHuyTim;
         public MenuStrip menuStrip1;
-        public ToolStripMenuItem fileToolStripMenuItem;
-        public ToolStripMenuItem aboutMeToolStripMenuItem;
-        public ToolStripMenuItem openToolStripMenuItem;
-        public ToolStripMenuItem saveToolStripMenuItem;
-        public ToolStripMenuItem closeToolStripMenuItem;
+        public ToolStripMenuItem fileMenu;
+        public ToolStripMenuItem SQLMenu;
+        public ToolStripMenuItem openFileMenu;
+        public ToolStripMenuItem saveFileMenu;
+        public ToolStripMenuItem closeFileMenu;
         public DataGridView table;
         private Label labelDanhSachSinhVien;
         private Label labelThemHoacChinhSua;
@@ -641,5 +645,9 @@ namespace DoAnCSharp
         public TextBox textBoxDiemCuoiKi;
         private GroupBox groupBoxGioiTinh;
         public MenuStrip menuStrip;
+        public ToolStripMenuItem openSQLMenu;
+        public ToolStripMenuItem loadSQLMenu;
+        public ToolStripMenuItem closeSQLMenu;
+        public ToolStripMenuItem aboutMeMenu;
     }
 }
