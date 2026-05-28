@@ -30,6 +30,7 @@ namespace DoAnCSharp
             this.viewQLSV.buttonTim.Click += nhanNutTimKiem;
             this.viewQLSV.fileMenu.Click += nhanNutSaveFile;
             this.viewQLSV.openSQLMenu.Click += nhanNutOpenSQLMenu;
+            this.viewQLSV.loadSQLMenu.Click += nhanNutLoadSQLMenu;
         }
         private void LoadInitialData()
         {
@@ -126,10 +127,7 @@ namespace DoAnCSharp
                 {
                     this.bindingListSV.Add(sv);
                 }
-                if(this.modelQLSV.ChucNang == "Them")
-                {
-                    sinhVienDao.getInstance().insert(sv);
-                }
+                
                 this.tuongTacSQL(sv);
 
             }
@@ -250,7 +248,10 @@ namespace DoAnCSharp
                 MessageBox.Show("Lỗi hệ thống khi mở XAMPP: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void nhanNutLoadSQLMenu(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }

@@ -11,9 +11,26 @@ namespace DoAnCSharp.Models
         {
             return new sinhVienDao();
         }
+        //Xoa
         public int delete(SinhVien t)
         {
-            throw new NotImplementedException();
+            int ketQua = 0;
+            string sql = "DELETE FROM sinhvien WHERE maSinhVien = @ma";
+
+            using (MySqlConnection con = MSCUtil.getConnection())
+            {
+                if (con == null) return 0;
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    //Dung Parameter de tranh SQL Injection (loi noi chuoi 1 == 1)
+                    cmd.Parameters.AddWithValue("@ma", t.MaSinhVien);
+                    
+                    // Thuc thi tra ve so dong bi anh huong 
+                    ketQua = cmd.ExecuteNonQuery();
+                }
+            }
+            return ketQua;
         }
 
         public int insert(SinhVien t)
@@ -47,7 +64,37 @@ namespace DoAnCSharp.Models
 
         public List<SinhVien> selectAll(SinhVien t)
         {
-            throw new NotImplementedException();
+            List<SinhVien> ketQua = new List<SinhVien>();
+            string sql = "SELECT * FROM sach";
+           
+            using (MySqlConnection con = MSCUtil.getConnection())
+            {
+                if (con == null) return ketQua;
+                    
+                using (MySqlCommand st = new MySqlCommand(sql, con))
+                {
+                        // Thực thi lệnh SQL và trả về DataReader (Tương đương ResultSet)
+                        using (MySqlDataReader rs = st.ExecuteReader())
+                        {
+                            // Bước 4: Duyệt qua từng dòng dữ liệu lấy được
+                            while (rs.Read())
+                            {
+                                // Đọc dữ liệu theo tên cột
+                                string id = rs["id"].ToString();
+                                string tenSach = rs["tenSach"].ToString();
+
+                                // C#: Ép kiểu dữ liệu số từ Database về float và int một cách an toàn
+                                float giaBan = Convert.ToSingle(rs["giaBan"]);
+                                int namXuatBan = Convert.ToInt32(rs["namXuatBan"]);
+
+                                // Tạo đối tượng Sach mới và thêm vào danh sách
+                                Sach sach = new Sach(id, tenSach, giaBan, namXuatBan);
+                                ketQua.Add(sach);
+                            }
+                        }
+                }
+            } 
+            return ketQua;
         }
 
         public List<SinhVien> selectByCondition(string condition)
