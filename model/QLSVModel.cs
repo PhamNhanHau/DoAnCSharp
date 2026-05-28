@@ -10,10 +10,17 @@ namespace DoAnCSharp.Models
     {
         private List<SinhVien> dsSinhVien;
         private string chucNang;
+        
         public string ChucNang
         {
             get { return chucNang; } 
             set { chucNang = value; }
+        }
+        private bool sql;
+        public bool SQL
+        {
+            get { return sql; }
+            set { sql = value; }
         }
         public List<SinhVien> DsSinhVien { get; set; } = new List<SinhVien>();
         //Constructor
@@ -21,6 +28,7 @@ namespace DoAnCSharp.Models
         {
             this.dsSinhVien = dsSinhVien;
             this.chucNang = "";
+            this.sql = false;
         }
         public QLSVModel()
         {
