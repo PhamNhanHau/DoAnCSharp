@@ -32,7 +32,7 @@ namespace DoAnCSharp.Models
             }
             return ketQua;
         }
-
+        //Them
         public int insert(SinhVien t)
         {
             int ketQua = 0;
@@ -61,52 +61,146 @@ namespace DoAnCSharp.Models
             }
             return ketQua;
         }
-
+        //Selected all
         public List<SinhVien> selectAll(SinhVien t)
         {
             List<SinhVien> ketQua = new List<SinhVien>();
             string sql = "SELECT * FROM sach";
-           
-            using (MySqlConnection con = MSCUtil.getConnection())
+            try
             {
-                if (con == null) return ketQua;
-                    
-                using (MySqlCommand st = new MySqlCommand(sql, con))
+                using (MySqlConnection con = MSCUtil.getConnection())
                 {
-                        // Thực thi lệnh SQL và trả về DataReader (Tương đương ResultSet)
+                    if (con == null) return ketQua;
+
+                    using (MySqlCommand st = new MySqlCommand(sql, con))
+                    {
+                        //Thuc thi lenh chi doc du lieu
                         using (MySqlDataReader rs = st.ExecuteReader())
                         {
-                            // Bước 4: Duyệt qua từng dòng dữ liệu lấy được
+                            
+                            
+                            //Duyet qua tung dong du lieu
                             while (rs.Read())
                             {
-                                // Đọc dữ liệu theo tên cột
-                                string id = rs["id"].ToString();
-                                string tenSach = rs["tenSach"].ToString();
+                                int maSinhVien = Convert.ToInt32(rs["maSinhVien"]);
+                                string tenSinhVien = Convert.ToString(rs["tenSinhVien"]);
+                                Tinh queQuan = Tinh.getTinhByTen(Convert.ToString(rs["queQuan"]));
+                                DateTime ngaySinh = Convert.ToDateTime(rs["ngaySinh"]);
+                                bool gioiTinh = SinhVien.gioiTinhBool(Convert.ToString(rs["gioiTinh"]));
 
-                                // C#: Ép kiểu dữ liệu số từ Database về float và int một cách an toàn
-                                float giaBan = Convert.ToSingle(rs["giaBan"]);
-                                int namXuatBan = Convert.ToInt32(rs["namXuatBan"]);
+                                float diemThuongXuyen1 = Convert.ToSingle(rs["diemThuongXuyen1"]);
+                                float diemThuongXuyen2 = Convert.ToSingle(rs["diemThuongXuyen2"]);
+                                float diemThuongXuyen3 = Convert.ToSingle(rs["diemThuongXuyen3"]);
+                                float diemGiuaKi = Convert.ToSingle(rs["diemGiuaKi"]);
+                                float diemCuoiKi = Convert.ToSingle(rs["diemCuoiKi"]);
+                                SinhVien sv = new SinhVien(maSinhVien, tenSinhVien, queQuan, ngaySinh, gioiTinh, diemThuongXuyen1, diemThuongXuyen2, diemThuongXuyen3, diemGiuaKi, diemCuoiKi);
 
-                                // Tạo đối tượng Sach mới và thêm vào danh sách
-                                Sach sach = new Sach(id, tenSach, giaBan, namXuatBan);
-                                ketQua.Add(sach);
+                                ketQua.Add(sv);
                             }
                         }
+                    }
                 }
-            } 
+            }
+            catch (Exception ex)
+            {
+
+            }
             return ketQua;
         }
-
+        //Selected by condition
         public List<SinhVien> selectByCondition(string condition)
         {
-            throw new NotImplementedException();
-        }
+            List<SinhVien> ketQua = new List<SinhVien>();
 
+            
+            string sql = "SELECT * FROM sinhvien WHERE " + (string.IsNullOrEmpty(condition) ? "1=1" : condition);
+
+            try
+            {
+                using (MySqlConnection con = MSCUtil.getConnection())
+                {
+                    if (con == null) return ketQua;
+
+                    using (MySqlCommand st = new MySqlCommand(sql, con))
+                    { 
+                        using (MySqlDataReader rs = st.ExecuteReader())
+                        {
+                            //Duyet qua tung dong du lieu
+                            while (rs.Read())
+                            {
+                                int maSinhVien = Convert.ToInt32(rs["maSinhVien"]);
+                                string tenSinhVien = Convert.ToString(rs["tenSinhVien"]);
+                                Tinh queQuan = Tinh.getTinhByTen(Convert.ToString(rs["queQuan"])); 
+                                DateTime ngaySinh = Convert.ToDateTime(rs["ngaySinh"]);
+                                bool gioiTinh = SinhVien.gioiTinhBool(Convert.ToString(rs["gioiTinh"]));
+                                float diemThuongXuyen1 = Convert.ToSingle(rs["diemThuongXuyen1"]);
+                                float diemThuongXuyen2 = Convert.ToSingle(rs["diemThuongXuyen2"]);
+                                float diemThuongXuyen3 = Convert.ToSingle(rs["diemThuongXuyen3"]);
+                                float diemGiuaKi = Convert.ToSingle(rs["diemGiuaKi"]);
+                                float diemCuoiKi = Convert.ToSingle(rs["diemCuoiKi"]);
+
+
+                                SinhVien sv = new SinhVien(maSinhVien, tenSinhVien, queQuan, ngaySinh, gioiTinh, diemThuongXuyen1, diemThuongXuyen2, diemThuongXuyen3, diemGiuaKi, diemCuoiKi);
+                                ketQua.Add(sv);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // In lỗi ra màn hình để bạn dễ debug nếu câu lệnh truyền vào bị sai cú pháp SQL
+                Console.WriteLine("Lỗi truy vấn selectByCondition: " + ex.Message);
+            }
+
+            return ketQua;
+        }
+        //Seltected by id
         public SinhVien selectByID(int ID)
         {
-            throw new NotImplementedException();
-        }
+            SinhVien sv = null;
+            string sql = "SELECT * FROM sinhvien WHERE maSinhVien = @ma";
 
+            try
+            {
+                using (MySqlConnection con = MSCUtil.getConnection())
+                {
+                    if (con == null) return null;
+
+                    using (MySqlCommand st = new MySqlCommand(sql, con))
+                    {
+                        st.Parameters.AddWithValue("@ma", ID);
+
+                        using (MySqlDataReader rs = st.ExecuteReader())
+                        {
+                            if (rs.Read())
+                            {
+                                int maSinhVien = Convert.ToInt32(rs["maSinhVien"]);
+                                string tenSinhVien = Convert.ToString(rs["tenSinhVien"]);
+                                Tinh queQuan = Tinh.getTinhByTen(Convert.ToString(rs["queQuan"]));
+                                DateTime ngaySinh = Convert.ToDateTime(rs["ngaySinh"]);
+                                bool gioiTinh = SinhVien.gioiTinhBool(Convert.ToString(rs["gioiTinh"]));
+
+                                float diemThuongXuyen1 = Convert.ToSingle(rs["diemThuongXuyen1"]);
+                                float diemThuongXuyen2 = Convert.ToSingle(rs["diemThuongXuyen2"]);
+                                float diemThuongXuyen3 = Convert.ToSingle(rs["diemThuongXuyen3"]);
+                                float diemGiuaKi = Convert.ToSingle(rs["diemGiuaKi"]);
+                                float diemCuoiKi = Convert.ToSingle(rs["diemCuoiKi"]);
+
+                                sv = new SinhVien(maSinhVien, tenSinhVien, queQuan, ngaySinh, gioiTinh, diemThuongXuyen1, diemThuongXuyen2, diemThuongXuyen3, diemGiuaKi, diemCuoiKi);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            return sv;
+        }
+        //Update
         public int update(SinhVien t)
         {
             int ketQua = 0;

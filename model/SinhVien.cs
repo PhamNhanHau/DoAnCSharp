@@ -231,7 +231,18 @@ namespace DoAnCSharp.Models
         {
             get { return gioiTinh ? "Nam" : "Nữ"; }
         }
-        public void loiDiem()
+        //Ham lay gioi tinh bool truyen vao chuoi
+        public static bool gioiTinhBool(string gioiTinhText)
+        {
+
+            if (gioiTinhText.Trim() == "Nam")
+            {
+                return true;
+            }
+            return false;
+            
+        }
+        private void loiDiem()
         {
             throw new ArgumentException("Điểm số phải nằm trong khoảng từ 0 đến 10");
         }
