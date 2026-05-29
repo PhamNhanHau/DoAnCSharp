@@ -241,16 +241,22 @@ namespace DoAnCSharp
                 System.Threading.Thread.Sleep(3000);
 
                
-                MessageBox.Show("Đã kích hoạt tiến trình mở Apache và MySQL thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã kích hoạt SQL", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi hệ thống khi mở XAMPP: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi hệ thống khi mở SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void nhanNutLoadSQLMenu(object sender, EventArgs e)
         {
-
+            List<SinhVien> dsMoi = sinhVienDao.getInstance().selectAll();
+            this.modelQLSV.DsSinhVien = dsMoi;
+            this.bindingListSV.Clear();
+            foreach (var sv in dsMoi)
+            {
+                this.bindingListSV.Add(sv);
+            }
         }
     }
 

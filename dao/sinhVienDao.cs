@@ -11,7 +11,7 @@ namespace DoAnCSharp.Models
         {
             return new sinhVienDao();
         }
-        //Xoa
+        //Delete
         public int delete(SinhVien t)
         {
             int ketQua = 0;
@@ -32,7 +32,7 @@ namespace DoAnCSharp.Models
             }
             return ketQua;
         }
-        //Them
+        //Insert
         public int insert(SinhVien t)
         {
             int ketQua = 0;
@@ -62,7 +62,7 @@ namespace DoAnCSharp.Models
             return ketQua;
         }
         //Selected all
-        public List<SinhVien> selectAll(SinhVien t)
+        public List<SinhVien> selectAll()
         {
             List<SinhVien> ketQua = new List<SinhVien>();
             string sql = "SELECT * FROM sach";
