@@ -11,8 +11,7 @@ namespace DoAnCSharp.Models
         private List<SinhVien> dsSinhVien;
         private string chucNang;
         private bool trangThaiSQL;
-
-        
+       
         public string ChucNang
         {
             get { return chucNang; } 

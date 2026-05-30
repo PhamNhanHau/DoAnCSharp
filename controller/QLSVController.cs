@@ -1,4 +1,5 @@
 ﻿using DoAnCSharp.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,6 +73,7 @@ namespace DoAnCSharp
             if (this.modelQLSV.ChucNang == "Them")
             {
                 this.ThucHienThemSinhVien();
+                Log.Information($"USER - Thêm sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()}");
             }
             else if (this.modelQLSV.ChucNang == "ChinhSua")
             {
@@ -80,6 +82,7 @@ namespace DoAnCSharp
                     int indexCanXoa = this.viewQLSV.table.CurrentRow.Index;
                     this.bindingListSV.RemoveAt(indexCanXoa);
                     this.ThucHienThemSinhVien();
+                    Log.Information($"USER - Chỉnh sửa sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()}");
                 }
             }
             else if (this.modelQLSV.ChucNang == "Xoa")
@@ -93,9 +96,9 @@ namespace DoAnCSharp
                     {
                         tuongTacSQL(svCanXoa);
                     }
+                    Log.Information($"- Xóa sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()}");
                 }
             }
-           
             this.viewQLSV.batButtonLuu();
         }
         private void ThucHienThemSinhVien()
@@ -259,7 +262,11 @@ namespace DoAnCSharp
         }
         private void nhanNutCloseSQLMenu(object sender, EventArgs e)
         {
-
+            closeSQL();
+            this.modelQLSV.TrangThaiSQL = false;
+        }
+        public void closeSQL()
+        {
             try
             {
                 //Tat SQL
@@ -287,14 +294,17 @@ namespace DoAnCSharp
             if (this.modelQLSV.ChucNang == "Them")
             {
                 sinhVienDao.getInstance().insert(sv);
+                Log.Information($"USER - Thêm sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()} vào DB");
             }
             else if (this.modelQLSV.ChucNang == "ChinhSua")
             {
                 sinhVienDao.getInstance().insert(sv);
+                Log.Information($"USER - Chỉnh sửa sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()} vào DB");
             }
             else if (this.modelQLSV.ChucNang == "Xoa")
             {
                 sinhVienDao.getInstance().delete(sv);
+                Log.Information($"USER - Xóa sinh viên có mã sinh viên {this.viewQLSV.textBoxMaSinhVienThem.Text.Trim()} vào DB");
             }
         }
     }

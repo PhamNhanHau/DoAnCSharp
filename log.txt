@@ -1,0 +1,4 @@
+2026-05-30 13:03:48.261 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 13:04:21.606 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 13:04:51.748 [INF] - USER - Thêm sinh viên có mã sinh viên 3 vào DB
+2026-05-30 13:04:51.748 [INF] - USER - Thêm sinh viên có mã sinh viên 3
