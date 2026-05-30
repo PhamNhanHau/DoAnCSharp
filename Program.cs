@@ -1,3 +1,4 @@
+using DoAnCSharp.Models;
 using Serilog;
 
 namespace DoAnCSharp
@@ -22,11 +23,13 @@ namespace DoAnCSharp
 
             
             ApplicationConfiguration.Initialize();
+            QLSVModel model = new QLSVModel();
             QLSVView view = new QLSVView();
             QLSVController controller = new QLSVController(view);
             Application.Run(view);
             //Giai phong bo nho
-            controller.closeSQL();
+            if (model.TrangThaiSQL) { controller.closeSQL(); }
+            
             Log.CloseAndFlush();
         }
     }
