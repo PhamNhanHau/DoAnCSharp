@@ -34,6 +34,8 @@ namespace DoAnCSharp
             openFileMenu = new ToolStripMenuItem();
             saveFileMenu = new ToolStripMenuItem();
             closeFileMenu = new ToolStripMenuItem();
+            exportToolStripMenuItem = new ToolStripMenuItem();
+            exportPDFMenu = new ToolStripMenuItem();
             SQLMenu = new ToolStripMenuItem();
             openSQLMenu = new ToolStripMenuItem();
             loadSQLMenu = new ToolStripMenuItem();
@@ -73,8 +75,6 @@ namespace DoAnCSharp
             textBoxDiemGiuaKi = new TextBox();
             textBoxDiemCuoiKi = new TextBox();
             groupBoxGioiTinh = new GroupBox();
-            exportToolStripMenuItem = new ToolStripMenuItem();
-            exportPDFMenu = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)table).BeginInit();
             groupBoxGioiTinh.SuspendLayout();
@@ -168,20 +168,33 @@ namespace DoAnCSharp
             // openFileMenu
             // 
             openFileMenu.Name = "openFileMenu";
-            openFileMenu.Size = new Size(224, 42);
+            openFileMenu.Size = new Size(186, 42);
             openFileMenu.Text = "Open";
             // 
             // saveFileMenu
             // 
             saveFileMenu.Name = "saveFileMenu";
-            saveFileMenu.Size = new Size(224, 42);
+            saveFileMenu.Size = new Size(186, 42);
             saveFileMenu.Text = "Save";
             // 
             // closeFileMenu
             // 
             closeFileMenu.Name = "closeFileMenu";
-            closeFileMenu.Size = new Size(224, 42);
+            closeFileMenu.Size = new Size(186, 42);
             closeFileMenu.Text = "Close";
+            // 
+            // exportToolStripMenuItem
+            // 
+            exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportPDFMenu });
+            exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            exportToolStripMenuItem.Size = new Size(186, 42);
+            exportToolStripMenuItem.Text = "Export";
+            // 
+            // exportPDFMenu
+            // 
+            exportPDFMenu.Name = "exportPDFMenu";
+            exportPDFMenu.Size = new Size(155, 42);
+            exportPDFMenu.Text = ".pdf";
             // 
             // SQLMenu
             // 
@@ -539,19 +552,6 @@ namespace DoAnCSharp
             groupBoxGioiTinh.Size = new Size(265, 68);
             groupBoxGioiTinh.TabIndex = 41;
             groupBoxGioiTinh.TabStop = false;
-            // 
-            // exportToolStripMenuItem
-            // 
-            exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportPDFMenu });
-            exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            exportToolStripMenuItem.Size = new Size(224, 42);
-            exportToolStripMenuItem.Text = "Export";
-            // 
-            // exportPDFMenu
-            // 
-            exportPDFMenu.Name = "exportPDFMenu";
-            exportPDFMenu.Size = new Size(224, 42);
-            exportPDFMenu.Text = ".pdf";
             // 
             // QLSVView
             // 

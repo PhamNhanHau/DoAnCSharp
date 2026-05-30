@@ -119,8 +119,7 @@ namespace DoAnCSharp
 
                 string chuoiGioiTinh = viewQLSV.radioButtonNam.Checked ? "Nam" : "Nữ";
                 bool gioiTinh = chuoiGioiTinh.Equals("Nam");
-                this.viewQLSV.kiemTraCheckedGioiTinh();
-
+                
                 string chuoiNgaySinh = $"{viewQLSV.textBoxNgay.Text.Trim()}/{viewQLSV.textBoxThang.Text.Trim()}/{viewQLSV.textBoxNam.Text.Trim()}";
                 DateTime ngaySinh = new DateTime(2000, 1, 1);
 
@@ -134,7 +133,7 @@ namespace DoAnCSharp
                 float diemtThuongXuyen3 = float.Parse(viewQLSV.textBoxDiemThuongXuyen3.Text.Trim());
                 float diemGiuaKi = float.Parse(viewQLSV.textBoxDiemGiuaKi.Text);
                 float diemCuoiKi = float.Parse(viewQLSV.textBoxDiemCuoiKi.Text);
-
+                this.viewQLSV.kiemTraThongTinTrong();
                 SinhVien sv = new SinhVien(maSinhVien, hoVaTen, queQuan, ngaySinh, gioiTinh, diemtThuongXuyen1, diemtThuongXuyen2, diemtThuongXuyen3, diemGiuaKi, diemCuoiKi);
                 this.modelQLSV.themSinhVien(sv);
                 if (this.bindingListSV != null)

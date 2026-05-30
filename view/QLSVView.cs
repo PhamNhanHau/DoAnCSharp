@@ -198,7 +198,7 @@ namespace DoAnCSharp
                 e.FormattingApplied = true;
             }
         }
-
+        //Ham lay du lieu khi nhan vao mot hang
         private void table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -246,12 +246,23 @@ namespace DoAnCSharp
             this.textBoxDiemGiuaKi.Text = row.Cells[8].Value?.ToString();
             this.textBoxDiemCuoiKi.Text = row.Cells[9].Value?.ToString();
         }
-        // Kiem tra groupbox
-        public void kiemTraCheckedGioiTinh()
+        //thong tin trong khi them vao danh sach
+        public void kiemTraThongTinTrong()
         {
-            if (this.radioButtonNam.Checked == false && this.radioButtonNu.Checked == false)
+            if (
+            (this.radioButtonNam.Checked == false && this.radioButtonNu.Checked == false)
+            || string.IsNullOrWhiteSpace(this.textBoxMaSinhVienThem.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxHoVaTen.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxNgay.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxThang.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxNam.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxDiemThuongXuyen1.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxDiemThuongXuyen2.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxDiemThuongXuyen3.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxDiemGiuaKi.Text)
+            || string.IsNullOrWhiteSpace(this.textBoxDiemCuoiKi.Text))
             {
-                throw new Exception("Chưa chọn giới tính");
+                throw new Exception("Chưa điền hết thông tin");
             }
         }
     }

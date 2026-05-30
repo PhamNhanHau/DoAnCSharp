@@ -32,3 +32,47 @@
 2026-05-30 15:55:12.724 [INF] - USER - Thực hiện load dữ liệu từ database
 2026-05-30 15:55:22.973 [INF] - USER - Thực hiện load dữ liệu từ database
 2026-05-30 15:55:51.457 [INF] - USER - Thực hiện ngắt kết nối với cơ sở dữ liệu!
+2026-05-30 16:00:27.909 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:00:37.042 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:00:44.018 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:01:01.643 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:01:16.597 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:01:18.709 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:01:33.184 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:01:46.943 [INF] - USER - Thêm sinh viên có mã sinh viên 3
+2026-05-30 16:01:55.636 [INF] - USER - Thêm sinh viên có mã sinh viên 
+2026-05-30 16:02:22.559 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:02:37.058 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:02:48.942 [INF] - USER - Thêm sinh viên có mã sinh viên 3
+2026-05-30 16:14:32.628 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:14:53.201 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:14:56.270 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:14:59.879 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:16:11.741 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:16:30.687 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:16:36.245 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:16:44.242 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:16:46.591 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:16:48.269 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:16:50.182 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:17:03.146 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:17:17.127 [INF] - USER - Thêm sinh viên có mã sinh viên 33
+2026-05-30 16:18:13.470 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:18:32.115 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:18:42.981 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:19:03.625 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:19:05.615 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:21:46.473 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:22:09.423 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:24:03.765 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:24:10.098 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:24:24.449 [INF] - USER - Thêm sinh viên có mã sinh viên 11
+2026-05-30 16:24:28.072 [INF] - USER - Thêm sinh viên có mã sinh viên 11
+2026-05-30 16:30:16.624 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:30:34.492 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:30:43.690 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:31:13.997 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 16:31:25.869 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:31:37.795 [INF] - USER - Thêm sinh viên có mã sinh viên 1
+2026-05-30 16:31:43.437 [INF] - USER - Thêm sinh viên có mã sinh viên 2
+2026-05-30 16:31:47.398 [INF] - USER - Thêm sinh viên có mã sinh viên 2
