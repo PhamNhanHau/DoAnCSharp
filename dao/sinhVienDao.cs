@@ -65,7 +65,7 @@ namespace DoAnCSharp.Models
         public List<SinhVien> selectAll()
         {
             List<SinhVien> ketQua = new List<SinhVien>();
-            string sql = "SELECT * FROM sach";
+            string sql = "SELECT * FROM sinhvien";
             try
             {
                 using (MySqlConnection con = MSCUtil.getConnection())

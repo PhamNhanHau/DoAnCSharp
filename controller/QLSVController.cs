@@ -31,6 +31,7 @@ namespace DoAnCSharp
             this.viewQLSV.fileMenu.Click += nhanNutSaveFile;
             this.viewQLSV.openSQLMenu.Click += nhanNutOpenSQLMenu;
             this.viewQLSV.loadSQLMenu.Click += nhanNutLoadSQLMenu;
+            this.viewQLSV.closeSQLMenu.Click += nhanNutCloseSQLMenu;
         }
         private void LoadInitialData()
         {
@@ -85,10 +86,16 @@ namespace DoAnCSharp
             {
                 if (this.viewQLSV.table.CurrentRow != null)
                 {
+                    SinhVien svCanXoa = (SinhVien)this.viewQLSV.table.CurrentRow.DataBoundItem;
                     int indexCanXoa = this.viewQLSV.table.CurrentRow.Index;
                     this.bindingListSV.RemoveAt(indexCanXoa);
+                    if (this.modelQLSV.TrangThaiSQL)
+                    {
+                        tuongTacSQL(svCanXoa);
+                    }
                 }
             }
+           
             this.viewQLSV.batButtonLuu();
         }
         private void ThucHienThemSinhVien()
@@ -127,30 +134,17 @@ namespace DoAnCSharp
                 {
                     this.bindingListSV.Add(sv);
                 }
-                
-                this.tuongTacSQL(sv);
-
+                if (this.modelQLSV.TrangThaiSQL)
+                {
+                    this.tuongTacSQL(sv);
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
         }
-        private void tuongTacSQL(SinhVien sv)
-        {
-            if (this.modelQLSV.ChucNang == "Them")
-            {
-                sinhVienDao.getInstance().insert(sv);
-            }
-            else if (this.modelQLSV.ChucNang == "ChinhSua")
-            {
-                sinhVienDao.getInstance().insert(sv);
-            }
-            else if (this.modelQLSV.ChucNang == "Xoa")
-            {
-                sinhVienDao.getInstance().delete(sv);
-            }
-        }
+        
         //Chuc nang huy tim
         private void nhanNutHuyTim(object sender, EventArgs e)
         {
@@ -199,12 +193,16 @@ namespace DoAnCSharp
             //khong co sinh vien nao dung ket qua
             this.viewQLSV.table.DataSource = bindingListTimKiem;
         }
+        //
         //Cac chuc nang cua File
+        //
         private void nhanNutSaveFile(object sender, EventArgs e)
         {
             
         }
+        //
         //Cac chuc nang cua SQL
+        //
         private void nhanNutOpenSQLMenu(object sender, EventArgs e)
         {
             string xamppFolder = @"D:\Tool\Xampp\Source";
@@ -224,7 +222,7 @@ namespace DoAnCSharp
                     Process.Start(apacheInfo);
                 }
 
-                //khoiChay Mysql
+                //khoi Chay Mysql
                 string mysqlScript = Path.Combine(xamppFolder, "mysql_start.bat");
                 if (File.Exists(mysqlScript))
                 {
@@ -241,7 +239,8 @@ namespace DoAnCSharp
                 System.Threading.Thread.Sleep(3000);
 
                
-                MessageBox.Show("Đã kích hoạt SQL", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã kích hoạt Apache và MySQL", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.modelQLSV.TrangThaiSQL = true;
             }
             catch (Exception ex)
             {
@@ -253,9 +252,49 @@ namespace DoAnCSharp
             List<SinhVien> dsMoi = sinhVienDao.getInstance().selectAll();
             this.modelQLSV.DsSinhVien = dsMoi;
             this.bindingListSV.Clear();
-            foreach (var sv in dsMoi)
+            foreach (SinhVien sv in dsMoi)
             {
                 this.bindingListSV.Add(sv);
+            }
+        }
+        private void nhanNutCloseSQLMenu(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //Tat SQL
+                foreach (var process in Process.GetProcessesByName("mysqld"))
+                {
+                    process.Kill();
+                }
+
+                //Tat Apache
+                foreach (var process in Process.GetProcessesByName("httpd"))
+                {
+                    process.Kill();
+                }
+
+                MessageBox.Show("Đã tắt apache và SQL!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.modelQLSV.TrangThaiSQL = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tắt apache và SQL " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void tuongTacSQL(SinhVien sv)
+        {
+            if (this.modelQLSV.ChucNang == "Them")
+            {
+                sinhVienDao.getInstance().insert(sv);
+            }
+            else if (this.modelQLSV.ChucNang == "ChinhSua")
+            {
+                sinhVienDao.getInstance().insert(sv);
+            }
+            else if (this.modelQLSV.ChucNang == "Xoa")
+            {
+                sinhVienDao.getInstance().delete(sv);
             }
         }
     }
