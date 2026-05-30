@@ -1,5 +1,6 @@
 using DoAnCSharp.Models;
 using Serilog;
+using System.Runtime.CompilerServices;
 
 namespace DoAnCSharp
 {
