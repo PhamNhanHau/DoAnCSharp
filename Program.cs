@@ -26,7 +26,7 @@ namespace DoAnCSharp
             ApplicationConfiguration.Initialize();
             QLSVModel model = new QLSVModel();
             QLSVView view = new QLSVView();
-            QLSVController controller = new QLSVController(view);
+            QLSVController controller = new QLSVController(view, model);
             Application.Run(view);
             //Giai phong bo nho
             if (model.TrangThaiSQL) { controller.closeSQL(); }

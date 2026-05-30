@@ -18,10 +18,10 @@ namespace DoAnCSharp
         private QLSVModel modelQLSV;
         private BindingList<SinhVien> bindingListSV;
         private BindingList<SinhVien> bindingListTimKiem;
-        public QLSVController(QLSVView view)
+        public QLSVController(QLSVView view, QLSVModel model)
         {
             this.viewQLSV = view;
-            this.modelQLSV = new QLSVModel();
+            this.modelQLSV = model;
             // Controller Khoi chay du lieu
             LoadInitialData();
             this.viewQLSV.buttonThem.Click += nhanNutThem;
@@ -218,6 +218,7 @@ namespace DoAnCSharp
                     File.WriteAllText(saveFileDialog.FileName, jsonString);
 
                     MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Log.Information($"USER - Thực hiện lưu file {saveFileDialog.FileName}");
                 }
                 catch (Exception ex)
                 {
@@ -247,6 +248,7 @@ namespace DoAnCSharp
                             this.bindingListSV.Add(sv);
                         }
                     }
+                    Log.Information($"USER - Thực hiện mở file {openFileDialog.FileName}");
                 }
                 catch (Exception ex)
                 {
@@ -266,6 +268,7 @@ namespace DoAnCSharp
                 this.viewQLSV.xoaFormThongTin();
                 this.modelQLSV.ChucNang = "";
             }
+            Log.Information($"USER - Thực hiện mở một chương trình mới");
         }
         //
         //Cac chuc nang cua SQL
@@ -308,6 +311,7 @@ namespace DoAnCSharp
                
                 MessageBox.Show("Đã kích hoạt Apache và MySQL", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.modelQLSV.TrangThaiSQL = true;
+                Log.Information($"USER - Thực hiện kết nối tới cơ sở dữ liệu");
             }
             catch (Exception ex)
             {
@@ -323,6 +327,7 @@ namespace DoAnCSharp
             {
                 this.bindingListSV.Add(sv);
             }
+            Log.Information($"USER - Thực hiện load dữ liệu từ database");
         }
         private void nhanNutCloseSQLMenu(object sender, EventArgs e)
         {
@@ -344,7 +349,7 @@ namespace DoAnCSharp
                 {
                     process.Kill();
                 }
-
+                Log.Information($"USER - Thực hiện ngắt kết nối với cơ sở dữ liệu!");
                 MessageBox.Show("Đã tắt apache và SQL!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.modelQLSV.TrangThaiSQL = false;
             }

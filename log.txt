@@ -9,3 +9,26 @@
 2026-05-30 13:19:56.599 [INF] - USER - Thêm sinh viên có mã sinh viên 4
 2026-05-30 13:25:51.103 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
 2026-05-30 14:59:22.399 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:23:39.774 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:40:20.311 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:40:33.211 [INF] - USER - Thực hiện kết nối tới cơ sở dữ liệu
+2026-05-30 15:40:34.980 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:42:42.694 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:42:50.208 [INF] - USER - Thực hiện kết nối tới cơ sở dữ liệu
+2026-05-30 15:42:52.744 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:43:49.333 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:46:49.112 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:46:56.032 [INF] - USER - Thực hiện kết nối tới cơ sở dữ liệu
+2026-05-30 15:46:57.323 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:46:59.059 [INF] - USER - Thực hiện ngắt kết nối với cơ sở dữ liệu!
+2026-05-30 15:53:42.096 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:53:50.861 [INF] - USER - Thực hiện kết nối tới cơ sở dữ liệu
+2026-05-30 15:53:52.257 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:53:58.803 [INF] - USER - Thực hiện ngắt kết nối với cơ sở dữ liệu!
+2026-05-30 15:54:47.706 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 15:54:59.812 [INF] - USER - Thực hiện kết nối tới cơ sở dữ liệu
+2026-05-30 15:55:01.114 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:55:05.842 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:55:12.724 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:55:22.973 [INF] - USER - Thực hiện load dữ liệu từ database
+2026-05-30 15:55:51.457 [INF] - USER - Thực hiện ngắt kết nối với cơ sở dữ liệu!
