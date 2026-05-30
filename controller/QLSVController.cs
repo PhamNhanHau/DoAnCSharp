@@ -246,7 +246,6 @@ namespace DoAnCSharp
                         {
                             this.bindingListSV.Add(sv);
                         }
-                        MessageBox.Show("Đọc dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)

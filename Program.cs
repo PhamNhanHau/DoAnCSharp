@@ -30,7 +30,6 @@ namespace DoAnCSharp
             Application.Run(view);
             //Giai phong bo nho
             if (model.TrangThaiSQL) { controller.closeSQL(); }
-            
             Log.CloseAndFlush();
         }
     }

@@ -8,3 +8,4 @@
 2026-05-30 13:19:56.599 [INF] - USER - Thêm sinh viên có mã sinh viên 4 vào DB
 2026-05-30 13:19:56.599 [INF] - USER - Thêm sinh viên có mã sinh viên 4
 2026-05-30 13:25:51.103 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.
+2026-05-30 14:59:22.399 [INF] - Ứng dụng Quản lý Sinh viên bắt đầu khởi chạy.

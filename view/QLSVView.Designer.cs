@@ -73,6 +73,8 @@ namespace DoAnCSharp
             textBoxDiemGiuaKi = new TextBox();
             textBoxDiemCuoiKi = new TextBox();
             groupBoxGioiTinh = new GroupBox();
+            exportToolStripMenuItem = new ToolStripMenuItem();
+            exportPDFMenu = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)table).BeginInit();
             groupBoxGioiTinh.SuspendLayout();
@@ -157,7 +159,7 @@ namespace DoAnCSharp
             // 
             // fileMenu
             // 
-            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { openFileMenu, saveFileMenu, closeFileMenu });
+            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { openFileMenu, saveFileMenu, closeFileMenu, exportToolStripMenuItem });
             fileMenu.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
             fileMenu.Name = "fileMenu";
             fileMenu.Size = new Size(74, 42);
@@ -538,6 +540,19 @@ namespace DoAnCSharp
             groupBoxGioiTinh.TabIndex = 41;
             groupBoxGioiTinh.TabStop = false;
             // 
+            // exportToolStripMenuItem
+            // 
+            exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportPDFMenu });
+            exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            exportToolStripMenuItem.Size = new Size(224, 42);
+            exportToolStripMenuItem.Text = "Export";
+            // 
+            // exportPDFMenu
+            // 
+            exportPDFMenu.Name = "exportPDFMenu";
+            exportPDFMenu.Size = new Size(224, 42);
+            exportPDFMenu.Text = ".pdf";
+            // 
             // QLSVView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -649,5 +664,7 @@ namespace DoAnCSharp
         public ToolStripMenuItem loadSQLMenu;
         public ToolStripMenuItem closeSQLMenu;
         public ToolStripMenuItem aboutMeMenu;
+        private ToolStripMenuItem exportToolStripMenuItem;
+        private ToolStripMenuItem exportPDFMenu;
     }
 }
