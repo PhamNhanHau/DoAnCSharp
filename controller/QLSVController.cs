@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.IO;
+using System.Text.Json;
 
 namespace DoAnCSharp
 {
@@ -29,7 +31,9 @@ namespace DoAnCSharp
             this.viewQLSV.buttonHuyBo.Click += nhanNutHuyBo;
             this.viewQLSV.buttonHuyTim.Click += nhanNutHuyTim;
             this.viewQLSV.buttonTim.Click += nhanNutTimKiem;
-            this.viewQLSV.fileMenu.Click += nhanNutSaveFile;
+            this.viewQLSV.saveFileMenu.Click += nhanNutSaveFile;
+            this.viewQLSV.openFileMenu.Click += nhanNutOpenFile;
+            this.viewQLSV.closeFileMenu.Click += nhanNutCloseFile;
             this.viewQLSV.openSQLMenu.Click += nhanNutOpenSQLMenu;
             this.viewQLSV.loadSQLMenu.Click += nhanNutLoadSQLMenu;
             this.viewQLSV.closeSQLMenu.Click += nhanNutCloseSQLMenu;
@@ -198,10 +202,71 @@ namespace DoAnCSharp
         }
         //
         //Cac chuc nang cua File
-        //
+        //Nut Save
         private void nhanNutSaveFile(object sender, EventArgs e)
         {
-            
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Data File (*.dat)|*.dat";
+            saveFileDialog.Title = "Lưu danh sách sinh viên";
+            saveFileDialog.DefaultExt = "dat";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string jsonString = JsonSerializer.Serialize(this.modelQLSV.DsSinhVien);
+                    File.WriteAllText(saveFileDialog.FileName, jsonString);
+
+                    MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi lưu file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        //Nut Open
+        private void nhanNutOpenFile(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Data File (*.dat)|*.dat";
+            openFileDialog.Title = "Mở file danh sách sinh viên";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string jsonString = File.ReadAllText(openFileDialog.FileName);
+                    List<SinhVien> dsDocDuoc = JsonSerializer.Deserialize<List<SinhVien>>(jsonString);
+                    if (dsDocDuoc != null)
+                    {
+                        this.modelQLSV.DsSinhVien = dsDocDuoc;
+                        this.bindingListSV.Clear();
+                        foreach (SinhVien sv in dsDocDuoc)
+                        {
+                            this.bindingListSV.Add(sv);
+                        }
+                        MessageBox.Show("Đọc dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi định dạng hoặc không thể đọc file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        //Nut Close
+        private void nhanNutCloseFile(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng danh sách hiện tại không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.modelQLSV.DsSinhVien.Clear();
+                this.bindingListSV.Clear();
+                this.viewQLSV.xoaFormThongTin();
+                this.modelQLSV.ChucNang = "";
+            }
         }
         //
         //Cac chuc nang cua SQL
